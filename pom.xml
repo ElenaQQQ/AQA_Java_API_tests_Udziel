@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.example</groupId>
-  <artifactId>ExLab_landingpage_test</artifactId>
+  <artifactId>Udziel_API_test</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <dependencies>
@@ -30,7 +30,7 @@
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
       <version>4.5.1</version>
-      <scope>test</scope>
+<!--      <scope>test</scope>-->
     </dependency>
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
     <dependency>
@@ -42,14 +42,14 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-reload4j</artifactId>
       <version>1.7.36</version>
-      <scope>test</scope>
+<!--      <scope>test</scope>-->
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
     <dependency>
       <groupId>org.hamcrest</groupId>
       <artifactId>hamcrest-all</artifactId>
       <version>1.3</version>
-      <scope>test</scope>
+<!--      <scope>test</scope>-->
     </dependency>
 
 
