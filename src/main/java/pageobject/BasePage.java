@@ -8,8 +8,6 @@ import static io.restassured.RestAssured.*;
 
 public class BasePage {
 
-
-
     protected String baseUrl = "http://udzel.hopto.org/api/";
 
 

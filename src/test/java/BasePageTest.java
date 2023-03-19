@@ -1,16 +1,11 @@
 
 import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 import pageobject.BasePage;
 import org.testng.annotations.*;
-import static io.restassured.RestAssured.baseURI;
-
+import static io.restassured.RestAssured.*;
 import static Config.Config.*;
 import static Config.Credentials.*;
-import static io.restassured.RestAssured.given;
 
 public class BasePageTest extends BasePage {
 
