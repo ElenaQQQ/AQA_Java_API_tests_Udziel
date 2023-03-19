@@ -9,6 +9,7 @@ import org.testng.annotations.*;
 import static io.restassured.RestAssured.baseURI;
 
 import static Config.Config.*;
+import static Config.Credentials.*;
 import static io.restassured.RestAssured.given;
 
 public class BasePageTest extends BasePage {
@@ -20,8 +21,8 @@ public class BasePageTest extends BasePage {
         baseURI = BASE_URI;
 
         String body = "{\n" +
-                "  \"email\": \"abc@gmail.com\",\n" +
-                "  \"password\": \"qwertyQ1_\"\n" +
+                " \"email\": \"" + USER_EMAIL + "\",\n" +
+                " \"password\": \"" + USER_PASSWORD + "\"\n" +
                 "}";
 
         Response response = given()
