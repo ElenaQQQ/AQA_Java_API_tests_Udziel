@@ -6,6 +6,7 @@ import pageobject.BasePage;
 import org.testng.annotations.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.*;
 import static Config.Config.*;
@@ -54,6 +55,13 @@ public class AdminPageTest extends BasePage {
 //        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Users list length = " + users.size());
         Assert.assertTrue(users.size() > 0,
                 "Don't get users list");
+
+
     }
 
 }
+
+//        users.forEach(x -> Assert.assertTrue(x.getEmail().contains("@")));
+//        Assert.assertTrue(users.stream().allMatch(x -> x.getId() >= 0));
+//    List<String> names = users.stream().map(User::getUsername).collect(Collectors.toList());
+//    List<String> ids = users.stream().map(x -> x.getId().toString()).collect(Collectors.toList());
