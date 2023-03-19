@@ -1,20 +1,30 @@
+import entities.UserCreated;
+import entities.UserRegistration;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+import pageobject.BasePage;
 
-import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
+import static Config.Credentials.*;
+import static io.restassured.RestAssured.*;
 
-public class RegistrationPageTest extends BasePageTest {
+public class RegistrationPageTest  extends BasePage {
 
-    @Test
-    public void getMyUserInfo(){
-        given()
-                .baseUri("http://udzel.hopto.org/api/")
-                .headers("Authorization","Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxMzk5NjY3LCJpYXQiOjE2Nzg4MDc2NjcsImp0aSI6IjFjNzNiNmJkYmU2NjQzNTNiMzY4MDU3ZDY4NGNjNWZiIiwidXNlcl9pZCI6NTh9.1Z6X2WyYqPKX6ymCZh9CiUew90kY0TXD1n1Iv9UfvSo")
-                .when()
-                .get("users/me/")
-                .then()
-                .statusCode(200);
+    @Test (description = "with valid e-mail: lower case")
+    public void userRegistration1(){
+
+        UserRegistration userRegistration = new UserRegistration(USER_PASSWORD, USER_NAME,"lena19032139@gmail.com");
+
+        Response response = given()
+                .header("Content-Type", "application/json")
+                .body(userRegistration)
+                        .post("http://udzel.hopto.org/api/users/");
+
+        response.then().log().all().statusCode(201);
+        System.out.println("XXXXXXXXXXXXXXX " + response.then().extract().jsonPath().getString("username"));
+//        Assert.assertEquals(USER_NAME, userCreated.getUsername(),
+//                "Not equal");
 
     }
 
