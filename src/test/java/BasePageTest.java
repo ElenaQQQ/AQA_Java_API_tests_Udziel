@@ -1,6 +1,5 @@
 
 import io.restassured.response.Response;
-import org.testng.Assert;
 import pageobject.BasePage;
 import org.testng.annotations.*;
 import static io.restassured.RestAssured.*;
