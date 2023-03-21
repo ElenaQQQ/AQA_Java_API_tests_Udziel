@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import pageobject.UserPage;
 import static io.restassured.RestAssured.*;
 
-public class UserPageTest extends BasePageTest {
+public class UserPageTest extends UserPage {
 
     @Test
     public void getInfoMe(){

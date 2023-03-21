@@ -11,8 +11,8 @@ public class RegistrationPageTest  extends BasePage {
 
     @Test (description = "with valid e-mail: lower case")
     public void userRegistration_1(){
-        baseURI = BASE_URI;
-        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_PASSWORD, USER_NAME,"lena21031454@gmail.com");
+
+        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_PASSWORD, USER_NAME,"lena21031524@gmail.com");
 
         Response response = given()
                 .header("Content-Type", "application/json")
@@ -32,7 +32,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(USER_NAME, response.then().extract().jsonPath().getString("username"),
@@ -48,7 +48,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(USER_NAME, response.then().extract().jsonPath().getString("username"),
@@ -64,7 +64,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(USER_NAME, response.then().extract().jsonPath().getString("username"),
@@ -80,7 +80,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(USER_NAME, response.then().extract().jsonPath().getString("username"),
@@ -96,7 +96,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(USER_NAME, response.then().extract().jsonPath().getString("username"),
@@ -112,7 +112,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(400);
         Assert.assertTrue(response.then().extract().jsonPath().getString("email").contains("не может быть пустым"),
@@ -129,7 +129,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(400);
         Assert.assertTrue(response.then().extract().jsonPath().getString("email").contains("не более 254 символов"),
@@ -145,7 +145,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(400);
         Assert.assertTrue(response.then().extract().jsonPath().getString("email").contains("Введите правильный адрес"),
@@ -160,7 +160,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(400);
         Assert.assertTrue(response.then().extract().jsonPath().getString("email").contains("Введите правильный адрес"),
@@ -176,7 +176,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(400);
         Assert.assertTrue(response.then().extract().jsonPath().getString("email").contains("Введите правильный адрес"),
@@ -192,7 +192,7 @@ public class RegistrationPageTest  extends BasePage {
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
-                .post("http://udzel.hopto.org/api/users/");
+                .post("users/");
 
         response.then().log().all().statusCode(400);
         Assert.assertTrue(response.then().extract().jsonPath().getString("email").contains("Введите правильный адрес"),

@@ -2,6 +2,7 @@ import entities.User;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import pageobject.AdminPage;
 import pageobject.BasePage;
 import org.testng.annotations.*;
 
@@ -12,36 +13,7 @@ import static io.restassured.RestAssured.*;
 import static Config.Config.*;
 import static Config.Credentials.*;
 
-public class AdminPageTest extends BasePage {
-
-    private String accessToken;
-
-    @BeforeTest
-    public void start() {
-        baseURI = BASE_URI;
-
-        String body = "{\n" +
-                " \"email\": \"" + ADMIN_EMAIL + "\",\n" +
-                " \"password\": \"" + ADMIN_PASSWORD + "\"\n" +
-                "}";
-
-        Response response = given()
-                .header("Content-Type", "application/json")
-                .body(body)
-                .post("jwt/create/");
-
-        response.then().log().all().statusCode(200);
-
-        setAccessToken(response.then().extract().response().jsonPath().getString("access"));
-    }
-
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken){
-        this.accessToken = accessToken;
-    }
+public class AdminPageTest extends AdminPage {
 
     @Test
     public void getUsersList(){
@@ -52,11 +24,9 @@ public class AdminPageTest extends BasePage {
                 .get("users/")
                 .then().log().all()
                 .extract().jsonPath().getList(".", User.class);
-//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Users list length = " + users.size());
+
         Assert.assertTrue(users.size() > 0,
                 "Don't get users list");
-
-
     }
 
 }
