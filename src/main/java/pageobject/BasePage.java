@@ -1,7 +1,9 @@
 package pageobject;
 
-import entities.UserDataToRegistration;
-import entities.UserToDelete;
+//import entities.UserDataToRegistration;
+import entities.*;
+//import entities.UserToDelete;
+//import entities.UserToLogin;
 import io.restassured.http.ContentType;
 import org.testng.annotations.*;
 
@@ -9,33 +11,26 @@ import static Config.Config.*;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
-
 import io.restassured.response.Response;
 
 public class BasePage {
-    UserToDelete userToDelete;
+//    UserToDelete userToDelete;
     @BeforeTest
     public void precondition() {
         baseURI = BASE_URI;
     }
 
     public String getAccessToken(String email, String password) {
-//        baseURI = BASE_URI;
 
-        String body = "{\n" +
-                " \"email\": \"" + email + "\",\n" +
-                " \"password\": \"" + password + "\"\n" +
-                "}";
+        UserToLogin userToLogin = new UserToLogin(email, password);
 
         Response response = given()
                 .header("Content-Type", "application/json")
-                .body(body)
+                .body(userToLogin)
                 .post("jwt/create/");
 
         return response.then().extract().response().jsonPath().getString("access");
     }
-
-
 
         public Response deleteUserMe(String email, String password){
             String body = "{\n" +

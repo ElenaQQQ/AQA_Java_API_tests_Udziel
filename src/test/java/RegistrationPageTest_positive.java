@@ -25,7 +25,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         response.then().log().all().statusCode(201);
         Assert.assertEquals(USER_EMAIL2.toLowerCase(), response.then().extract().jsonPath().getString("email"),
                 "TEST FAILED");
-        deleteUserMe(USER_EMAIL2,USER_TEST_PASSWORD);
+        deleteUserMe(USER_EMAIL2.toLowerCase(), USER_TEST_PASSWORD);
     }
 
     @Test (description = "with valid e-mail: starting with number")
@@ -36,7 +36,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         response.then().log().all().statusCode(201);
         Assert.assertEquals(USER_EMAIL3.toLowerCase(), response.then().extract().jsonPath().getString("email"),
                 "TEST FAILED");
-        deleteUserMe(USER_EMAIL3,USER_TEST_PASSWORD);
+        deleteUserMe(USER_EMAIL3.toLowerCase(),USER_TEST_PASSWORD);
     }
 
     @Test (description = "with valid e-mail: with several dots in name part, not in a row")

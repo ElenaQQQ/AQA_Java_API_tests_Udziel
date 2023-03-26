@@ -10,11 +10,11 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class UserPage extends BasePage {
-    private String accessToken;
-
-    @BeforeTest
-    public void start() {
-        baseURI = BASE_URI;
+//    private String accessToken;
+//
+//    @BeforeTest
+//    public void start() {
+//        baseURI = BASE_URI;
 //
 //        String body = "{\n" +
 //                " \"email\": \"" + USER_EMAIL + "\",\n" +
@@ -30,7 +30,7 @@ public class UserPage extends BasePage {
 //
 //        setAccessToken(response.then().extract().response().jsonPath().getString("access"));
 //        getAccessToken(USER_EMAIL, USER_PASSWORD);
-    }
+//    }
 
 //    public String getAccessToken() {
 //        return accessToken;
