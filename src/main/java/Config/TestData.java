@@ -6,12 +6,12 @@ public class TestData {
     //Registration page tests positive
     public static final String USER_TEST_PASSWORD = USER_PASSWORD;
     public static final String USER_TEST_NAME = USER_NAME;
-    public static final String USER_EMAIL1 = "lena26032055@gmail.com";
-    public static final String USER_EMAIL2 = "LenA26032055@gmail.com";
-    public static final String USER_EMAIL3 = "1lenA26032055@gmail.com";
-    public static final String USER_EMAIL4 = "lena.21.031.26032055@gmail.com";
-    public static final String USER_EMAIL5 = "lena26032055@gmail.com.com.j.com";
-    public static final String USER_EMAIL6 = "len-a26032055@gmail.com";
+    public static final String USER_EMAIL1 = "lena26032143@gmail.com";
+    public static final String USER_EMAIL2 = "LenA26032146@gmail.com";
+    public static final String USER_EMAIL3 = "1lenA26032143@gmail.com";
+    public static final String USER_EMAIL4 = "lena.21.031.26032139@gmail.com";
+    public static final String USER_EMAIL5 = "lena26032139@gmail.com.com.j.com";
+    public static final String USER_EMAIL6 = "len-a26032139@gmail.com";
     //Registration page tests negative
     public static final String USER_EMAIL7 = "";
     public static final String USER_RESPONSE7 = "не может быть пустым";
