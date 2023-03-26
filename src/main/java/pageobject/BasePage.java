@@ -1,11 +1,10 @@
 package pageobject;
 
+import entities.UserDataToRegistration;
 import io.restassured.http.ContentType;
 import org.testng.annotations.*;
-import io.restassured.RestAssured.*;
+
 import static Config.Config.*;
-import static Config.Credentials.USER_EMAIL;
-import static Config.Credentials.USER_PASSWORD;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
@@ -49,6 +48,16 @@ public class BasePage {
                 .delete("users/me/");
 //        response.then().log().all().statusCode(204);
             return response;
+    }
+
+    public Response registerUser(String email, String password, String username) {
+        UserDataToRegistration userRegistration = new UserDataToRegistration(email, password, username);
+
+        Response response = given()
+                .header("Content-Type", "application/json")
+                .body(userRegistration)
+                .post("users/");
+        return response;
     }
 
 
