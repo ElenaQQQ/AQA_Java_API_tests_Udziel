@@ -11,4 +11,6 @@ public class RegistrationPage extends BasePage {
         baseURI = BASE_URI;
     }
 
+
+
 }
