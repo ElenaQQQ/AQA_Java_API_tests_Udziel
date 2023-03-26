@@ -5,6 +5,7 @@ import org.testng.annotations.*;
 import pageobject.BasePage;
 
 import static Config.Credentials.*;
+import static Config.TestData.*;
 import static io.restassured.RestAssured.*;
 
 public class RegistrationPageTest_positive extends BasePage {
@@ -12,7 +13,7 @@ public class RegistrationPageTest_positive extends BasePage {
     @Test (description = "with valid e-mail: lower case")
     public void userRegistration_1(){
 
-        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_PASSWORD, USER_NAME,"lena21031524@gmail.com");
+        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_TEST_PASSWORD, USER_NAME, USER_EMAIL1);
 
         Response response = given()
                 .header("Content-Type", "application/json")
@@ -27,7 +28,7 @@ public class RegistrationPageTest_positive extends BasePage {
     @Test (description = "with valid e-mail: lower case and upper case")
     public void userRegistration_2(){
 
-        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_PASSWORD, USER_NAME,"LenA21031215@gmail.com");
+        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_TEST_PASSWORD, USER_NAME,USER_EMAIL2);
 
         Response response = given()
                 .header("Content-Type", "application/json")
@@ -43,7 +44,7 @@ public class RegistrationPageTest_positive extends BasePage {
     @Test (description = "with valid e-mail: starting with number")
     public void userRegistration_3(){
 
-        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_PASSWORD, USER_NAME,"1lena21031215@gmail.com");
+        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_TEST_PASSWORD, USER_NAME,USER_EMAIL3);
 
         Response response = given()
                 .header("Content-Type", "application/json")
@@ -59,7 +60,7 @@ public class RegistrationPageTest_positive extends BasePage {
     @Test (description = "with valid e-mail: with several dots in name part, not in a row")
     public void userRegistration_4(){
 
-        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_PASSWORD, USER_NAME,"lena.21.031.215@gmail.com");
+        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_TEST_PASSWORD, USER_NAME,USER_EMAIL4);
 
         Response response = given()
                 .header("Content-Type", "application/json")
@@ -75,7 +76,7 @@ public class RegistrationPageTest_positive extends BasePage {
     @Test (description = "with valid e-mail: with several dots in domain part, not in a row")
     public void userRegistration_5(){
 
-        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_PASSWORD, USER_NAME,"lena21031215@gmail.com.com.j.com");
+        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_TEST_PASSWORD, USER_NAME,USER_EMAIL5);
 
         Response response = given()
                 .header("Content-Type", "application/json")
@@ -91,7 +92,7 @@ public class RegistrationPageTest_positive extends BasePage {
     @Test (description = "with valid e-mail: with \"-\" in name part")
     public void userRegistration_6(){
 
-        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_PASSWORD, USER_NAME,"len-a21031215@gmail.com");
+        UserDataToRegistration userRegistration = new UserDataToRegistration(USER_TEST_PASSWORD, USER_NAME, USER_EMAIL6);
 
         Response response = given()
                 .header("Content-Type", "application/json")
