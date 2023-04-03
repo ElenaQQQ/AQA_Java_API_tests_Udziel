@@ -6,8 +6,8 @@ public class TestData {
     //Registration page tests positive
     public static final String USER_TEST_PASSWORD = USER_PASSWORD;
     public static final String USER_TEST_NAME = USER_NAME;
-    public static final String USER_EMAIL1 = "lena26032200@gmail.com";
-    public static final String USER_EMAIL2 = "LenAAA26032202@gmail.com";
+    public static final String USER_EMAIL1 = "lena03042025@gmail.com";
+    public static final String USER_EMAIL2 = "LenAAA02032001@gmail.com";
     public static final String USER_EMAIL3 = "1lenA26032202@gmail.com";
     public static final String USER_EMAIL4 = "lena.21.031.26032200@gmail.com";
     public static final String USER_EMAIL5 = "lena26032200@gmail.com.com.j.com";
@@ -25,4 +25,11 @@ public class TestData {
     public static final String USER_RESPONSE11 = "Введите правильный адрес";
     public static final String USER_EMAIL12 = "lena@.mail.ru";
     public static final String USER_RESPONSE12 = "Введите правильный адрес";
+
+    //Registration page passwords testa positive
+    public static final String USER_PASSWORD16 = "qazwsxedcohohohohoh";
+    public static final String USER_PASSWORD17 = "QAZWSXEDCPFJHGF";
+    public static final String USER_PASSWORD18 = "qazWSXedcRFVspnhge";
+    public static final String USER_PASSWORD19 = "q1w2e3r4t5765432";
+    public static final String USER_PASSWORD20 = "~!?@#$%^&*_-+()[]{}></|'.,:;";
 }

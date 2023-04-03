@@ -1,6 +1,8 @@
 package pageobject;
 
 //import entities.UserDataToRegistration;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import entities.*;
 //import entities.UserToDelete;
 //import entities.UserToLogin;
@@ -12,6 +14,10 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 import io.restassured.response.Response;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class BasePage {
 //    UserToDelete userToDelete;
@@ -46,18 +52,29 @@ public class BasePage {
             return response;
     }
 
-    public Response registerUser(String email, String password, String username) {
-        UserDataToRegistration userRegistration = new UserDataToRegistration(email, password, username);
+    public Response registerUser(UserDataToRegistration userRegistration) {
 
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
                 .post("users/");
-//        userToDelete = new UserToDelete(email, password);
+//        userToDelete = new UserToDelete(userRegistration.getEmail(), userRegistration.getPassword());
 
         return response;
     }
 
 
+//    public JsonObject parseJSON(String fileName){
+//        JsonObject jsonObject = new JsonParser().parse(getJson(fileName)).getAsJsonObject();
+//        return jsonObject;
+//    }
+//
+//    public String getJson(String fileName){
+//        try {
+//            return new String(Files.readAllBytes(Paths.get("src/main/java/resourses/" + fileName + ".json")));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }
 
