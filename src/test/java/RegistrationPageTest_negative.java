@@ -8,6 +8,7 @@ import static Config.TestData.*;
 
 public class RegistrationPageTest_negative  extends RegistrationPage {
     public String userEmail;
+    public String userPassword;
 
     @Test (description = "with invalid e-mail: empty field")
     public void userRegistration_7(){
@@ -80,6 +81,66 @@ public class RegistrationPageTest_negative  extends RegistrationPage {
 
         response.then().log().all().statusCode(400);
         Assert.assertTrue(response.then().extract().jsonPath().getString("email").contains(USER_RESPONSE12),
+                "TEST FAILED: No expected message");
+
+    }
+
+    @Test (description = "7 symbols")
+    public void userRegistration_21(){
+        userPassword = USER_PASSWORD21;
+        UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, userPassword, USER_TEST_NAME);
+        Response response = registerUser(userDataToRegistration);
+
+        response.then().log().all().statusCode(400);
+        Assert.assertTrue(response.then().extract().jsonPath().getString("password").contains(USER_RESPONSE21),
+                "TEST FAILED: No expected message");
+
+    }
+
+    @Test (description = "equal to name + \"1\"")
+    public void userRegistration_22(){
+        userPassword = USER_PASSWORD22;
+        UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, userPassword, USER_TEST_NAME);
+        Response response = registerUser(userDataToRegistration);
+
+        response.then().log().all().statusCode(400);
+        Assert.assertTrue(response.then().extract().jsonPath().getString("password").contains(USER_RESPONSE22),
+                "TEST FAILED: No expected message");
+
+    }
+
+    @Test (description = "equal to email")
+    public void userRegistration_23(){
+        userPassword = USER_PASSWORD23;
+        UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, userPassword, USER_TEST_NAME);
+        Response response = registerUser(userDataToRegistration);
+
+        response.then().log().all().statusCode(400);
+        Assert.assertTrue(response.then().extract().jsonPath().getString("password").contains(USER_RESPONSE23),
+                "TEST FAILED: No expected message");
+
+    }
+
+    @Test (description = "numbers only >= 8 symbols")
+    public void userRegistration_24(){
+        userPassword = USER_PASSWORD24;
+        UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, userPassword, USER_TEST_NAME);
+        Response response = registerUser(userDataToRegistration);
+
+        response.then().log().all().statusCode(400);
+        Assert.assertTrue(response.then().extract().jsonPath().getString("password").contains(USER_RESPONSE24),
+                "TEST FAILED: No expected message");
+
+    }
+
+    @Test (description = "qwerty")
+    public void userRegistration_25(){
+        userPassword = USER_PASSWORD25;
+        UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, userPassword, USER_TEST_NAME);
+        Response response = registerUser(userDataToRegistration);
+
+        response.then().log().all().statusCode(400);
+        Assert.assertTrue(response.then().extract().jsonPath().getString("password").contains(USER_RESPONSE25),
                 "TEST FAILED: No expected message");
 
     }
