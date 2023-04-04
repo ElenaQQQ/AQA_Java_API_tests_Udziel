@@ -17,6 +17,7 @@ import static Config.TestData.*;
 public class RegistrationPageTest_positive extends BasePage_positive {
     public String userEmail;
     public String userPassword;
+    public String userName;
 
     /*@AfterMethod
     public void postcondition(){
@@ -109,7 +110,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         deleteUserMe(userEmail,USER_TEST_PASSWORD);
     }
 
-    @Test (description = "lowerCase letters only >=8 symbols")
+    @Test (description = "with valid password: lowerCase letters only >=8 symbols")
     public void userRegistration_16(){
         userPassword = USER_PASSWORD16;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, userPassword, USER_TEST_NAME);
@@ -121,7 +122,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         deleteUserMe(USER_EMAIL1,userPassword);
     }
 
-    @Test (description = "UpperCase letters only >=8 symbols")
+    @Test (description = "with valid password: UpperCase letters only >=8 symbols")
     public void userRegistration_17(){
         userPassword = USER_PASSWORD17;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, userPassword, USER_TEST_NAME);
@@ -133,7 +134,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         deleteUserMe(USER_EMAIL1,userPassword);
     }
 
-    @Test (description = "lowerCase and UpperCase letters only >=8 symbols")
+    @Test (description = "with valid password: lowerCase and UpperCase letters only >=8 symbols")
     public void userRegistration_18(){
         userPassword = USER_PASSWORD18;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, userPassword, USER_TEST_NAME);
@@ -145,7 +146,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         deleteUserMe(USER_EMAIL1,userPassword);
     }
 
-    @Test (description = "letters and numbers >=8 symbols")
+    @Test (description = "with valid password: letters and numbers >=8 symbols")
     public void userRegistration_19(){
         userPassword = USER_PASSWORD19;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, userPassword, USER_TEST_NAME);
@@ -157,7 +158,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         deleteUserMe(USER_EMAIL1,userPassword);
     }
 
-    @Test (description = "special symbols >= 8")
+    @Test (description = "with valid password: special symbols >= 8")
     public void userRegistration_20(){
         userPassword = USER_PASSWORD20;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, userPassword, USER_TEST_NAME);
@@ -169,6 +170,65 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         deleteUserMe(USER_EMAIL1,userPassword);
     }
 
+    @Test (description = "with valid name: Uppercase and Lowercase letters")
+    public void userRegistration_26(){
+        userName = USER_NAME26;
+        UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, USER_TEST_PASSWORD, userName);
+        Response response = registerUser(userDataToRegistration);
+
+        response.then().log().all().statusCode(201);
+        Assert.assertEquals(USER_EMAIL1.toLowerCase(), response.then().extract().jsonPath().getString("email"),
+                "TEST FAILED");
+        deleteUserMe(USER_EMAIL1,USER_TEST_PASSWORD);
+    }
+
+    @Test (description = "with valid name: Cyrillic letters")
+    public void userRegistration_27(){
+        userName = USER_NAME27;
+        UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, USER_TEST_PASSWORD, userName);
+        Response response = registerUser(userDataToRegistration);
+
+        response.then().log().all().statusCode(201);
+        Assert.assertEquals(USER_EMAIL1.toLowerCase(), response.then().extract().jsonPath().getString("email"),
+                "TEST FAILED");
+        deleteUserMe(USER_EMAIL1,USER_TEST_PASSWORD);
+    }
+
+    @Test (description = "with valid name: Contains numbers")
+    public void userRegistration_28(){
+        userName = USER_NAME28;
+        UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, USER_TEST_PASSWORD, userName);
+        Response response = registerUser(userDataToRegistration);
+
+        response.then().log().all().statusCode(201);
+        Assert.assertEquals(USER_EMAIL1.toLowerCase(), response.then().extract().jsonPath().getString("email"),
+                "TEST FAILED");
+        deleteUserMe(USER_EMAIL1,USER_TEST_PASSWORD);
+    }
+
+    @Test (description = "with valid name: Contains \"@+.-_\"")
+    public void userRegistration_29(){
+        userName = USER_NAME29;
+        UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, USER_TEST_PASSWORD, userName);
+        Response response = registerUser(userDataToRegistration);
+
+        response.then().log().all().statusCode(201);
+        Assert.assertEquals(USER_EMAIL1.toLowerCase(), response.then().extract().jsonPath().getString("email"),
+                "TEST FAILED");
+        deleteUserMe(USER_EMAIL1,USER_TEST_PASSWORD);
+    }
+
+    @Test (description = "with valid name: Equal to email")
+    public void userRegistration_30(){
+        userName = USER_NAME30;
+        UserDataToRegistration userDataToRegistration = new UserDataToRegistration(USER_EMAIL1, USER_TEST_PASSWORD, userName);
+        Response response = registerUser(userDataToRegistration);
+
+        response.then().log().all().statusCode(201);
+        Assert.assertEquals(USER_EMAIL1.toLowerCase(), response.then().extract().jsonPath().getString("email"),
+                "TEST FAILED");
+        deleteUserMe(USER_EMAIL1,USER_TEST_PASSWORD);
+    }
 
 
 }

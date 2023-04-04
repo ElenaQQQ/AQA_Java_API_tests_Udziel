@@ -44,4 +44,19 @@ public class TestData {
     public static final String USER_RESPONSE24 = "только из цифр";
     public static final String USER_PASSWORD25 = "qwerty";
     public static final String USER_RESPONSE25 = "широко распространён";
+
+    //Registration page name tests positive
+    public static final String USER_NAME26 = "Elena"; //Is used as base for another
+    public static final String USER_NAME27 = "Елена";
+    public static final String USER_NAME28 = USER_NAME26 + "1";
+    public static final String USER_NAME29 = USER_NAME26 + "@+.-_";
+    public static final String USER_NAME30 = USER_EMAIL1;
+
+    //Registration page name tests negative
+    public static final String USER_NAME31 = "";
+    public static final String USER_RESPONSE31 = "не может быть пустым";
+    public static final String USER_NAME32 = "a".repeat(151);
+    public static final String USER_RESPONSE32 = "не более 150 символов";
+    public static final String USER_NAME33 = USER_NAME26 + "*/#";
+    public static final String USER_RESPONSE33 = "может содержать только";
 }
