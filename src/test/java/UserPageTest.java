@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.*;
 public class UserPageTest extends UserPage {
 
     @Test
-    public void getInfoMe(){
+    public void getInfoMe_13(){
         Response response = given()
                 .header("Authorization", "Token " + getAccessToken(USER_EMAIL, USER_PASSWORD))
                 .when()
@@ -22,7 +22,7 @@ public class UserPageTest extends UserPage {
     }
 
     @Test
-    public void deleteUserMe(){
+    public void deleteUserMe_14(){
         Response response = deleteUserMe("lena26031811@mail.ru", USER_PASSWORD);
         Assert.assertEquals(response.then().extract().statusCode(),204);
     }
