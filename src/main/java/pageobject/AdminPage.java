@@ -28,14 +28,14 @@ public class AdminPage extends BasePage {
 
         response.then().log().all().statusCode(200);
 
-        setAccessToken(response.then().extract().response().jsonPath().getString("access"));
+        setAdminAccessToken(response.then().extract().response().jsonPath().getString("access"));
     }
 
-    public String getAccessToken() {
+    public String getAdminAccessToken() {
         return accessToken;
     }
 
-    public void setAccessToken(String accessToken){
+    public void setAdminAccessToken(String accessToken){
         this.accessToken = accessToken;
     }
 }

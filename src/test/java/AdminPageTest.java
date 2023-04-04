@@ -1,24 +1,19 @@
 import entities.User;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import org.testng.Assert;
 import pageobject.AdminPage;
-import pageobject.BasePage;
 import org.testng.annotations.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.*;
-import static Config.Config.*;
-import static Config.Credentials.*;
 
 public class AdminPageTest extends AdminPage {
 
     @Test
-    public void getUsersList(){
+    public void getUsersList_15(){
         List<User> users = given()
-                .header("Authorization", "Token " + getAccessToken())
+                .header("Authorization", "Token " + getAdminAccessToken())
                 .when()
                 .contentType(ContentType.JSON)
                 .get("users/")
