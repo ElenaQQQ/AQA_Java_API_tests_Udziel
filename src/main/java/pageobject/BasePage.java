@@ -38,8 +38,8 @@ public class BasePage {
         return response.then().extract().response().jsonPath().getString("access");
     }
 
-        public Response deleteUserMe(String email, String password){
-            String body = "{\n" +
+    public Response deleteUserMe(String email, String password){
+        String body = "{\n" +
                     " \"current_password\": \"" + password + "\"\n" +
                     "}";
         Response response = given()

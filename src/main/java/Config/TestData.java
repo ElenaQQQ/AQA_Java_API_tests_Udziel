@@ -1,12 +1,19 @@
 package Config;
 
 import static Config.Credentials.*;
+import com.github.javafaker.Faker;
+
+import java.util.Random;
 
 public class TestData {
+    /*Random random = new Random();
+    private static Integer randomNumber = random.nextInt(1000000);
+    public static final String USER_TEST_EMAIL = "lena" + String.valueOf(randomNumber) + "@gmail.com";*/
+
     //Registration page tests positive
     public static final String USER_TEST_PASSWORD = USER_PASSWORD;
     public static final String USER_TEST_NAME = USER_NAME;
-    public static final String USER_EMAIL1 = "lena03042040@gmail.com"; // used for all negative tests
+    public static final String USER_EMAIL1 = "lena04041529@gmail.com"; // used for all negative tests
     public static final String USER_EMAIL2 = "LenAAA02032001@gmail.com";
     public static final String USER_EMAIL3 = "1lenA26032202@gmail.com";
     public static final String USER_EMAIL4 = "lena.21.031.26032200@gmail.com";
@@ -59,4 +66,15 @@ public class TestData {
     public static final String USER_RESPONSE32 = "не более 150 символов";
     public static final String USER_NAME33 = USER_NAME26 + "*/#";
     public static final String USER_RESPONSE33 = "может содержать только";
+
+    //User page tests
+    private static final Faker faker = new Faker();
+    public static final String USER_RANDOM_EMAIL = faker.bothify("lena######@mail.ru");
+    public static final String USER_EMAIL_NEW = "lena19041609@mail.ru";
+    public static final String USER_NAME44 = "Elena"; //Is used as base for another
+    public static final String USER_NAME45 = "Елена";
+    public static final String USER_NAME46 = USER_NAME26 + "1";
+    public static final String USER_NAME47 = USER_NAME26 + "@+.-_";
+    public static final String USER_NAME48 = USER_EMAIL1;
+
 }

@@ -22,6 +22,8 @@ public class AdminPageTest extends AdminPage {
 
         Assert.assertTrue(users.size() > 0,
                 "Don't get users list");
+
+//        List<User> users2 = users.stream().filter(x -> x.getEmail() == "abc@gmail.com");
     }
 
 }
