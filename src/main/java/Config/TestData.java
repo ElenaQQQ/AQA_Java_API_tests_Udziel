@@ -77,4 +77,11 @@ public class TestData {
     public static final String USER_NAME47 = USER_NAME26 + "@+.-_";
     public static final String USER_NAME48 = USER_EMAIL1;
 
+    public static final String USER_NAME49 = "";
+    public static final String USER_RESPONSE49 = "не может быть пустым";
+    public static final String USER_NAME50 = "a".repeat(151);
+    public static final String USER_RESPONSE50 = "не более 150 символов";
+    public static final String USER_NAME51 = USER_NAME26 + "*/#";
+    public static final String USER_RESPONSE51 = "может содержать только";
+
 }

@@ -53,6 +53,10 @@ public class UserPage extends BasePage {
 //
 //    }
 
+    private String accessToken;
+    private UserDataToRegistration userRandomToTestChanges;
+
+
     public Response changeUsername(String newName, String accessToken){
         Response response = given()
                 .when()
@@ -62,7 +66,7 @@ public class UserPage extends BasePage {
                         " \"username\": \"" + newName + "\"\n" +
                         "}")
                 .patch("users/me/");
-        response.then().log().all().statusCode(200);
+
         return response;
     }
 
