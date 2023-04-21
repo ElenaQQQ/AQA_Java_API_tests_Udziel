@@ -70,4 +70,30 @@ public class UserPage extends BasePage {
         return response;
     }
 
+    public Response changeUserData(String newEmail, String newName, String newPassword){
+        Response response = given()
+                .when()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Token " + getAccessToken(newEmail, newPassword))
+                .body("{\n" +
+                        " \"email\": \"" + newEmail + "\"\n" +
+                        " \"username\": \"" + newName + "\"\n" +
+                        " \"password\": \"" + newPassword + "\"\n" +
+                        "}")
+                .put("users/me/");
+        return response;
+    }
+
+    public Response changeUserPassword(String newPassword, String accessToken){
+        Response response = given()
+                .when()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Token " + accessToken)
+                .body("{\n" +
+                        " \"new_password\": \"" + newPassword + "\"\n" +
+                        "}")
+                .post("users/set_password/");
+        return response;
+    }
+
 }

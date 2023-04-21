@@ -68,6 +68,22 @@ public class TestData {
     public static final String USER_RESPONSE33 = "может содержать только";
 
     //User page tests
+    public static final String USER_PASSWORD34 = "qazwsxedcohohohohoh";
+    public static final String USER_PASSWORD35 = "QAZWSXEDCPFJHGF";
+    public static final String USER_PASSWORD36 = "qazWSXedcRFVspnhge";
+    public static final String USER_PASSWORD37 = "q1w2e3r4t5765432";
+    public static final String USER_PASSWORD38 = "~!?@#$%^&*_-+()[]{}></|'.,:;";
+
+    public static final String USER_PASSWORD39 = "kdutgfj";
+    public static final String USER_RESPONSE39 = "слишком короткий";
+    public static final String USER_PASSWORD40 = USER_NAME + "1";
+    public static final String USER_RESPONSE40 = "слишком похож на username";
+    public static final String USER_RESPONSE41 = "слишком похож на email";
+    public static final String USER_PASSWORD42 = "197354873";
+    public static final String USER_RESPONSE42 = "только из цифр";
+    public static final String USER_PASSWORD43 = "qwerty";
+    public static final String USER_RESPONSE43 = "широко распространён";
+
     private static final Faker faker = new Faker();
     public static final String USER_RANDOM_EMAIL = faker.bothify("lena######@mail.ru");
     public static final String USER_EMAIL_NEW = "lena19041609@mail.ru";
