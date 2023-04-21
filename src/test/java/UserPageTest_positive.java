@@ -17,11 +17,9 @@ public class UserPageTest_positive extends UserPage {
 
     @BeforeMethod
     public void precondition1(){
-        String userRandomEmail = USER_RANDOM_EMAIL;
-        userRandomToTestChanges = new UserDataToRegistration(userRandomEmail, USER_PASSWORD, USER_NAME);
+        userRandomToTestChanges = new UserDataToRegistration(USER_RANDOM_EMAIL, USER_PASSWORD, USER_NAME);
         registerUser(userRandomToTestChanges);
-        accessToken = getAccessToken(userRandomEmail, USER_PASSWORD);
-
+        accessToken = getAccessToken(USER_RANDOM_EMAIL, USER_PASSWORD);
     }
 
 
@@ -74,7 +72,7 @@ public class UserPageTest_positive extends UserPage {
 
     @Test (description = "change name to valid: Equal to email")
     public void test_48() {
-        Response response1 = changeUsername(USER_NAME48, accessToken);
+        Response response1 = changeUsername(userRandomToTestChanges.getEmail(), accessToken);
         response1.then().log().all().statusCode(200);
         Assert.assertEquals(USER_NAME48, response1.then().extract().jsonPath().getString("username"));
     }

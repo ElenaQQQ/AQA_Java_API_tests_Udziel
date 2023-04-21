@@ -1,11 +1,8 @@
 package pageobject;
 
-//import entities.UserDataToRegistration;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import entities.*;
-//import entities.UserToDelete;
-//import entities.UserToLogin;
 import io.restassured.http.ContentType;
 import org.testng.annotations.*;
 
@@ -20,7 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class BasePage {
-//    UserToDelete userToDelete;
+
     @BeforeTest
     public void precondition() {
         baseURI = BASE_URI;
@@ -58,8 +55,6 @@ public class BasePage {
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
                 .post("users/");
-//        userToDelete = new UserToDelete(userRegistration.getEmail(), userRegistration.getPassword());
-
         return response;
     }
 

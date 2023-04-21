@@ -3,11 +3,11 @@ import entities.UserDataToRegistration;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pageobject.BasePage_positive;
+import pageobject.BasePage;
 
 import static Config.TestData.*;
 
-public class RegistrationPageTest_positive extends BasePage_positive {
+public class RegistrationPageTest_positive extends BasePage {
     public String userEmail = USER_RANDOM_EMAIL;
     public String userPassword = USER_TEST_PASSWORD;
     public String userName = USER_TEST_NAME;
@@ -102,7 +102,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         Response response = registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
-        Assert.assertEquals(USER_EMAIL1.toLowerCase(), response.then().extract().jsonPath().getString("email"),
+        Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
                 "TEST FAILED");
     }
 
@@ -113,7 +113,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         Response response = registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
-        Assert.assertEquals(USER_EMAIL1.toLowerCase(), response.then().extract().jsonPath().getString("email"),
+        Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
                 "TEST FAILED");
     }
 
@@ -124,7 +124,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         Response response = registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
-        Assert.assertEquals(USER_EMAIL1.toLowerCase(), response.then().extract().jsonPath().getString("email"),
+        Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
                 "TEST FAILED");
     }
 
@@ -135,7 +135,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
         Response response = registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
-        Assert.assertEquals(USER_EMAIL1.toLowerCase(), response.then().extract().jsonPath().getString("email"),
+        Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
                 "TEST FAILED");
     }
 
@@ -196,7 +196,7 @@ public class RegistrationPageTest_positive extends BasePage_positive {
 
     @Test (description = "with valid name: Equal to email")
     public void userRegistration_30(){
-        userName = USER_NAME30;
+        userName = userEmail;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
         Response response = registerUser(userDataToRegistration);
 

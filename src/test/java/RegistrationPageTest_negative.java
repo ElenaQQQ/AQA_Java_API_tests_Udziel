@@ -112,7 +112,7 @@ public class RegistrationPageTest_negative  extends RegistrationPage {
 
     @Test (description = "with invalid password: equal to email")
     public void userRegistration_23(){
-        userPassword = USER_PASSWORD23;
+        userPassword = userEmail;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
         Response response = registerUser(userDataToRegistration);
 

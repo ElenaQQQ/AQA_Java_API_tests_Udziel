@@ -3,12 +3,7 @@ package Config;
 import static Config.Credentials.*;
 import com.github.javafaker.Faker;
 
-import java.util.Random;
-
 public class TestData {
-    /*Random random = new Random();
-    private static Integer randomNumber = random.nextInt(1000000);
-    public static final String USER_TEST_EMAIL = "lena" + String.valueOf(randomNumber) + "@gmail.com";*/
 
     //Registration page tests positive
     public static final String USER_TEST_PASSWORD = USER_PASSWORD;

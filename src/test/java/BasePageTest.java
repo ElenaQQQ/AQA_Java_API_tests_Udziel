@@ -12,14 +12,6 @@ public class BasePageTest extends BasePage {
 
 
 
-//    @AfterTest
-//    public void finish() {
-//
-//    }
-//
-//    @Test (description = "", groups = "")
-//    public void test1 (){
-//
-//    };
+
 
 }
