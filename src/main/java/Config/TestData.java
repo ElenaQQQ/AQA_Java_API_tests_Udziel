@@ -1,6 +1,5 @@
 package Config;
 
-import static Config.Credentials.*;
 import com.github.javafaker.Faker;
 
 public class TestData {
@@ -45,7 +44,6 @@ public class TestData {
     public static final String USER_RESPONSE21 = "слишком короткий";
     public static final String USER_PASSWORD22 = USER_TEST_NAME + "1";
     public static final String USER_RESPONSE22 = "слишком похож на username";
-    public static final String USER_PASSWORD23 = USER_EMAIL1;
     public static final String USER_RESPONSE23 = "слишком похож на email";
     public static final String USER_PASSWORD24 = "197354873";
     public static final String USER_RESPONSE24 = "только из цифр";
@@ -53,7 +51,7 @@ public class TestData {
     public static final String USER_RESPONSE25 = "широко распространён";
 
     //Registration page name tests positive
-    public static final String USER_NAME26 = "Elena"; //Is used as base for another
+    public static final String USER_NAME26 = "Elena";
     public static final String USER_NAME27 = "Елена";
     public static final String USER_NAME28 = USER_NAME26 + "1";
     public static final String USER_NAME29 = USER_NAME26 + "@+.-_";
@@ -76,7 +74,7 @@ public class TestData {
 
     public static final String USER_PASSWORD39 = "kdutgfj";
     public static final String USER_RESPONSE39 = "слишком короткий";
-    public static final String USER_PASSWORD40 = USER_NAME + "1";
+    public static final String USER_PASSWORD40 = USER_TEST_NAME + "1";
     public static final String USER_RESPONSE40 = "слишком похож на username";
     public static final String USER_RESPONSE41 = "слишком похож на email";
     public static final String USER_PASSWORD42 = "197354873";
@@ -84,14 +82,10 @@ public class TestData {
     public static final String USER_PASSWORD43 = "qwerty";
     public static final String USER_RESPONSE43 = "широко распространён";
 
-
-
-    public static final String USER_EMAIL_NEW = "lena19041609@mail.ru";
     public static final String USER_NAME44 = "Elena"; //Is used as base for another
     public static final String USER_NAME45 = "Елена";
     public static final String USER_NAME46 = USER_NAME26 + "1";
     public static final String USER_NAME47 = USER_NAME26 + "@+.-_";
-    public static final String USER_NAME48 = USER_EMAIL1;
 
     public static final String USER_NAME49 = "";
     public static final String USER_RESPONSE49 = "не может быть пустым";
