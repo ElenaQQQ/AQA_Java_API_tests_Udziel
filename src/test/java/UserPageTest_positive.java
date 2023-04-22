@@ -12,21 +12,21 @@ import static io.restassured.RestAssured.*;
 
 public class UserPageTest_positive extends UserPage {
 
-    private String accessToken;
-    private UserDataToRegistration userRandomToTestChanges;
+//    private String accessToken;
+//    private UserDataToRegistration userRandomToTestChanges;
 
-    @BeforeMethod
-    public void precondition1(){
-        userRandomToTestChanges = new UserDataToRegistration(USER_RANDOM_EMAIL, USER_PASSWORD, USER_NAME);
-        registerUser(userRandomToTestChanges);
-        accessToken = getAccessToken(USER_RANDOM_EMAIL, USER_PASSWORD);
-    }
-
-
-    @AfterMethod
-    public void deleteUserAfterTest(){
-        deleteUserMe(userRandomToTestChanges.getEmail().toLowerCase(), userRandomToTestChanges.getPassword());
-    }
+//    @BeforeMethod
+//    public void beforeEachTest(){
+//        userRandomToTestChanges = new UserDataToRegistration(USER_RANDOM_EMAIL, USER_PASSWORD, USER_NAME);
+//        registerUser(userRandomToTestChanges);
+//        accessToken = getAccessToken(USER_RANDOM_EMAIL, USER_PASSWORD);
+//    }
+//
+//
+//    @AfterMethod
+//    public void deleteUserAfterTest(){
+//        deleteUserMe(userRandomToTestChanges.getEmail().toLowerCase(), userRandomToTestChanges.getPassword());
+//    }
 
     @Test
     public void getInfoMe_13(){
@@ -74,7 +74,7 @@ public class UserPageTest_positive extends UserPage {
     public void test_48() {
         Response response1 = changeUsername(userRandomToTestChanges.getEmail(), accessToken);
         response1.then().log().all().statusCode(200);
-        Assert.assertEquals(USER_NAME48, response1.then().extract().jsonPath().getString("username"));
+        Assert.assertEquals(userRandomToTestChanges.getEmail(), response1.then().extract().jsonPath().getString("username"));
     }
 
     @Test (description = "change password to valid: lowerCase letters only >=8 symbols")

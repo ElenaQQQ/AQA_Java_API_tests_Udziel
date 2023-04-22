@@ -3,6 +3,7 @@ package pageobject;
 import entities.UserDataToRegistration;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
@@ -13,6 +14,22 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class UserPage extends BasePage {
+
+    protected UserDataToRegistration userRandomToTestChanges;
+    protected String accessToken;
+
+    @BeforeMethod
+    public void beforeEachTest(){
+        userRandomToTestChanges = new UserDataToRegistration(USER_RANDOM_EMAIL, USER_PASSWORD, USER_NAME);
+        registerUser(userRandomToTestChanges);
+        accessToken = getAccessToken(USER_RANDOM_EMAIL, USER_PASSWORD);
+    }
+
+
+    @AfterMethod
+    public void deleteUserAfterTest(){
+        deleteUserMe(userRandomToTestChanges.getEmail().toLowerCase(), userRandomToTestChanges.getPassword());
+    }
 
     public Response changeUsername(String newName, String accessToken){
         Response response = given()

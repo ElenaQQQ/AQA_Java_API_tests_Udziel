@@ -80,7 +80,7 @@ public class TestData {
     public static final String USER_RESPONSE43 = "широко распространён";
 
     private static final Faker faker = new Faker();
-    public static final String USER_RANDOM_EMAIL = faker.bothify("lena######@mail.ru");
+    public static final String USER_RANDOM_EMAIL = faker.bothify("lena######????@mail.ru");
     public static final String USER_EMAIL_NEW = "lena19041609@mail.ru";
     public static final String USER_NAME44 = "Elena"; //Is used as base for another
     public static final String USER_NAME45 = "Елена";

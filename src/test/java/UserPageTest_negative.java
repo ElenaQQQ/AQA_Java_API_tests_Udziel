@@ -13,19 +13,19 @@ import static io.restassured.RestAssured.given;
 
 public class UserPageTest_negative extends UserPage {
 
-    private String accessToken;
-    public String userEmail;
-    public String userPassword = USER_TEST_PASSWORD;
-    public String userName = USER_NAME;
-    private UserDataToRegistration userRandomToTestChanges;
+//    private String accessToken;
+//    public String userEmail;
+//    public String userPassword = USER_TEST_PASSWORD;
+//    public String userName = USER_NAME;
+//    private UserDataToRegistration userRandomToTestChanges;
 
-    @BeforeMethod
-    public void precondition1(){
-        userEmail = USER_RANDOM_EMAIL;
-        userRandomToTestChanges = new UserDataToRegistration(userEmail, userPassword, userName);
-        registerUser(userRandomToTestChanges);
-        accessToken = getAccessToken(userEmail, userPassword);
-    }
+//    @BeforeMethod
+//    public void beforeEachTest(){
+//        userEmail = USER_RANDOM_EMAIL;
+//        userRandomToTestChanges = new UserDataToRegistration(userEmail, userPassword, userName);
+//        registerUser(userRandomToTestChanges);
+//        accessToken = getAccessToken(userEmail, userPassword);
+//    }
 
     //Delete tests are here because we don't need to use afterTest with deleting created user with them
    @Test

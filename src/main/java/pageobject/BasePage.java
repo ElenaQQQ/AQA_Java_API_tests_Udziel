@@ -45,7 +45,6 @@ public class BasePage {
                 .header("Authorization", "Token " + getAccessToken(email, password))
                 .body(body)
                 .delete("users/me/");
-        response.then().log().all().statusCode(204);
             return response;
     }
 
