@@ -29,7 +29,7 @@ public class BasePageTest {
 
     @AfterMethod
     public void deleteUserAfterTest(){
-        basePage.deleteUserMe(userEmail.toLowerCase(), userPassword);
+        basePage.deleteUserMe(userEmail, userPassword);
     }
 
 

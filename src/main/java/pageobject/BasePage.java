@@ -42,7 +42,7 @@ public class BasePage {
         Response response = given()
                 .when()
                 .contentType(ContentType.JSON)
-                .header("Authorization", "Token " + getAccessToken(email, password))
+                .header("Authorization", "Token " + getAccessToken(email.toLowerCase(), password))
                 .body(body)
                 .delete("users/me/");
             return response;

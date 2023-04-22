@@ -28,7 +28,7 @@ public class UserPage extends BasePage {
 
     @AfterMethod
     public void deleteUserAfterTest(){
-        deleteUserMe(userRandomToTestChanges.getEmail().toLowerCase(), userRandomToTestChanges.getPassword());
+        deleteUserMe(userRandomToTestChanges.getEmail(), userRandomToTestChanges.getPassword());
     }
 
     public Response changeUsername(String newName, String accessToken){
