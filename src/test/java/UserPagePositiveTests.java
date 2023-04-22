@@ -6,23 +6,8 @@ import pageobject.UserPage;
 import static Config.TestData.*;
 import static io.restassured.RestAssured.*;
 
-public class UserPageTestPositive extends UserPage {
+public class UserPagePositiveTests extends UserPage {
 
-//    private String accessToken;
-//    private UserDataToRegistration userRandomToTestChanges;
-
-//    @BeforeMethod
-//    public void beforeEachTest(){
-//        userRandomToTestChanges = new UserDataToRegistration(USER_RANDOM_EMAIL, USER_PASSWORD, USER_NAME);
-//        registerUser(userRandomToTestChanges);
-//        accessToken = getAccessToken(USER_RANDOM_EMAIL, USER_PASSWORD);
-//    }
-//
-//
-//    @AfterMethod
-//    public void deleteUserAfterTest(){
-//        deleteUserMe(userRandomToTestChanges.getEmail().toLowerCase(), userRandomToTestChanges.getPassword());
-//    }
 
     @Test
     public void getInfoMe_13(){
@@ -68,49 +53,54 @@ public class UserPageTestPositive extends UserPage {
 
     @Test (description = "change name to valid: Equal to email")
     public void test_48() {
-        Response response1 = changeUsername(userRandomToTestChanges.getEmail(), accessToken);
+        Response response1 = changeUsername(userToTest.getEmail(), accessToken);
         response1.then().log().all().statusCode(200);
-        Assert.assertEquals(userRandomToTestChanges.getEmail(), response1.then().extract().jsonPath().getString("username"));
+        Assert.assertEquals(userToTest.getEmail(), response1.then().extract().jsonPath().getString("username"));
     }
 
     @Test (description = "change password to valid: lowerCase letters only >=8 symbols")
     public void test_34() {
         Response response1 = changeUserPassword(USER_PASSWORD34, accessToken);
         response1.then().log().all().statusCode(204);
-        userRandomToTestChanges.setPassword(USER_PASSWORD34);
-        Assert.assertTrue(getAccessToken(userRandomToTestChanges.getEmail(), userRandomToTestChanges.getPassword()).length() > 10);
+        userToLogin.setPassword(USER_PASSWORD34);
+        userToDelete.setPassword(USER_PASSWORD34);
+        Assert.assertTrue(getAccessToken(userToLogin).length() > 10);
     }
 
     @Test (description = "change password to valid: UpperCase letters only >=8 symbols")
     public void test_35() {
         Response response1 = changeUserPassword(USER_PASSWORD35, accessToken);
         response1.then().log().all().statusCode(204);
-        userRandomToTestChanges.setPassword(USER_PASSWORD35);
-        Assert.assertTrue(getAccessToken(userRandomToTestChanges.getEmail(), userRandomToTestChanges.getPassword()).length() > 10);
+        userToLogin.setPassword(USER_PASSWORD35);
+        userToDelete.setPassword(USER_PASSWORD35);
+        Assert.assertTrue(getAccessToken(userToLogin).length() > 10);
     }
 
     @Test (description = "change password to valid: lowerCase and UpperCase letters only >=8 symbols")
     public void test_36() {
         Response response1 = changeUserPassword(USER_PASSWORD36, accessToken);
         response1.then().log().all().statusCode(204);
-        userRandomToTestChanges.setPassword(USER_PASSWORD36);
-        Assert.assertTrue(getAccessToken(userRandomToTestChanges.getEmail(), userRandomToTestChanges.getPassword()).length() > 10);
+        userToLogin.setPassword(USER_PASSWORD36);
+        userToDelete.setPassword(USER_PASSWORD36);
+        Assert.assertTrue(getAccessToken(userToLogin).length() > 10);
     }
 
     @Test (description = "change password to valid: letters and numbers >=8 symbols")
     public void test_37() {
         Response response1 = changeUserPassword(USER_PASSWORD37, accessToken);
         response1.then().log().all().statusCode(204);
-        userRandomToTestChanges.setPassword(USER_PASSWORD37);
-        Assert.assertTrue(getAccessToken(userRandomToTestChanges.getEmail(), userRandomToTestChanges.getPassword()).length() > 10);
+        userToLogin.setPassword(USER_PASSWORD37);
+        userToDelete.setPassword(USER_PASSWORD37);
+        Assert.assertTrue(getAccessToken(userToLogin).length() > 10);
     }
 
     @Test (description = "change password to valid: special symbols >= 8: ~ ! ? @ # $ % ^ & * _ - + ( ) [ ] { } > < / \\ | \" ' . , : ;")
     public void test_38() {
         Response response1 = changeUserPassword(USER_PASSWORD38, accessToken);
         response1.then().log().all().statusCode(204);
-        userRandomToTestChanges.setPassword(USER_PASSWORD38);
-        Assert.assertTrue(getAccessToken(userRandomToTestChanges.getEmail(), userRandomToTestChanges.getPassword()).length() > 10);
+        userToLogin.setPassword(USER_PASSWORD38);
+        userToDelete.setPassword(USER_PASSWORD38);
+        Assert.assertTrue(getAccessToken(userToLogin).length() > 10);
     }
 
 }
