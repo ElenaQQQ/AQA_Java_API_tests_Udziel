@@ -23,9 +23,7 @@ public class BasePage {
         baseURI = BASE_URI;
     }
 
-    public String getAccessToken(String email, String password) {
-
-        UserToLogin userToLogin = new UserToLogin(email, password);
+    public String getAccessToken(UserToLogin userToLogin) {
 
         Response response = given()
                 .header("Content-Type", "application/json")
@@ -35,17 +33,17 @@ public class BasePage {
         return response.then().extract().response().jsonPath().getString("access");
     }
 
-    public Response deleteUserMe(String email, String password){
+    public Response deleteUserMe(UserToDelete userToDelete){
+        UserToLogin userToLogin = new UserToLogin(userToDelete.getEmail().toLowerCase(),userToDelete.getPassword());
         String body = "{\n" +
-                    " \"current_password\": \"" + password + "\"\n" +
+                    " \"current_password\": \"" + userToDelete.getPassword() + "\"\n" +
                     "}";
-        Response response = given()
+        return given()
                 .when()
                 .contentType(ContentType.JSON)
-                .header("Authorization", "Token " + getAccessToken(email.toLowerCase(), password))
+                .header("Authorization", "Token " + getAccessToken(userToLogin))
                 .body(body)
                 .delete("users/me/");
-            return response;
     }
 
     public Response registerUser(UserDataToRegistration userRegistration) {

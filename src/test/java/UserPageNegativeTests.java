@@ -6,26 +6,12 @@ import pageobject.UserPage;
 import static Config.TestData.*;
 import static io.restassured.RestAssured.given;
 
-public class UserPageTestNegative extends UserPage {
+public class UserPageNegativeTests extends UserPage {
 
-//    private String accessToken;
-//    public String userEmail;
-//    public String userPassword = USER_TEST_PASSWORD;
-//    public String userName = USER_NAME;
-//    private UserDataToRegistration userRandomToTestChanges;
 
-//    @BeforeMethod
-//    public void beforeEachTest(){
-//        userEmail = USER_RANDOM_EMAIL;
-//        userRandomToTestChanges = new UserDataToRegistration(userEmail, userPassword, userName);
-//        registerUser(userRandomToTestChanges);
-//        accessToken = getAccessToken(userEmail, userPassword);
-//    }
-
-    //Delete tests are here because we don't need to use afterTest with deleting created user with them
    @Test
     public void deleteUserMe_14(){
-        Response response = deleteUserMe(userRandomToTestChanges.getEmail(), userRandomToTestChanges.getPassword());
+        Response response = deleteUserMe(userToDelete);
         Assert.assertEquals(response.then().extract().statusCode(),204);
     }
 
@@ -70,7 +56,7 @@ public class UserPageTestNegative extends UserPage {
 
     @Test (description = "change password to invalid: equal to email")
     public void test_41() {
-        Response response1 = changeUserPassword(userRandomToTestChanges.getEmail(), accessToken);
+        Response response1 = changeUserPassword(userToTest.getEmail(), accessToken);
         response1.then().log().all().statusCode(400);
         Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains(USER_RESPONSE41));
     }

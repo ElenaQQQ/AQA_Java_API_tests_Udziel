@@ -5,21 +5,20 @@ import com.github.javafaker.Faker;
 
 public class TestData {
 
+
     //BASE DATA
-    private static final Faker faker = new Faker();
-    public static final String USER_RANDOM_EMAIL = faker.bothify("lena######????@mail.ru");
-    public static final String USER_RANDOM_PASSWORD = faker.bothify("###???###???Q_");
+    protected static Faker faker = new Faker();
 
     public static final String USER_TEST_NAME = "Name";
 
     //Registration page tests positive
 
-    public static final String USER_EMAIL1 = "lena04041529@gmail.com"; // used for all negative tests
-    public static final String USER_EMAIL2 = "LenAAA02032001@gmail.com";
-    public static final String USER_EMAIL3 = "1lenA26032202@gmail.com";
-    public static final String USER_EMAIL4 = "lena.21.031.26032200@gmail.com";
-    public static final String USER_EMAIL5 = "lena26032200@gmail.com.com.j.com";
-    public static final String USER_EMAIL6 = "len-a26032200@gmail.com";
+    public static final String USER_EMAIL1 = faker.bothify("lena?????@gmail.com");
+    public static final String USER_EMAIL2 = faker.bothify("????".toUpperCase() + "lena?????@gmail.com");
+    public static final String USER_EMAIL3 = faker.bothify("#lenA26032202@gmail.com");
+    public static final String USER_EMAIL4 = faker.bothify("lena.21.031.?????@gmail.com");
+    public static final String USER_EMAIL5 = faker.bothify("lena?????@gmail.com.com.j.com");
+    public static final String USER_EMAIL6 = faker.bothify("len-a?????@gmail.com");
     //Registration page tests negative
     public static final String USER_EMAIL7 = "";
     public static final String USER_RESPONSE7 = "не может быть пустым";
