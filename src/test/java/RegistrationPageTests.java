@@ -1,11 +1,35 @@
+import com.github.javafaker.Faker;
 import entities.UserDataToRegistration;
+import entities.UserToDelete;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pageobject.BasePage;
 
 import static Config.TestData.*;
 
 public class RegistrationPageTests extends BasePageTest {
+
+    protected BasePage basePage;
+    protected UserDataToRegistration userToTest;
+    protected UserToDelete userToDelete;
+    protected static Faker faker = new Faker();
+    protected static String userEmailRandom;
+    protected static String userPasswordRandom;
+
+    @BeforeMethod
+    public void beforeEachTest() {
+        userEmailRandom = faker.bothify("lena######????@mail.ru");
+        userPasswordRandom = faker.bothify("###???###???Q_");
+        userToTest = new UserDataToRegistration(userEmailRandom, userPasswordRandom, USER_TEST_NAME);
+        userToDelete = new UserToDelete(userToTest.getEmail(), userToTest.getPassword());
+        basePage = new BasePage();
+    }
+
+    @AfterMethod
+    public void deleteUserAfterTest(){
+        basePage.deleteUserMe(userToDelete);
+    }
 
     @Test (description = "with valid e-mail: lower case")
     public void userRegistration_1(){
