@@ -5,9 +5,15 @@ import com.github.javafaker.Faker;
 
 public class TestData {
 
+    //BASE DATA
+    private static final Faker faker = new Faker();
+    public static final String USER_RANDOM_EMAIL = faker.bothify("lena######????@mail.ru");
+    public static final String USER_RANDOM_PASSWORD = faker.bothify("###???###???Q_");
+
+    public static final String USER_TEST_NAME = "Name";
+
     //Registration page tests positive
-    public static final String USER_TEST_PASSWORD = USER_PASSWORD;
-    public static final String USER_TEST_NAME = USER_NAME;
+
     public static final String USER_EMAIL1 = "lena04041529@gmail.com"; // used for all negative tests
     public static final String USER_EMAIL2 = "LenAAA02032001@gmail.com";
     public static final String USER_EMAIL3 = "1lenA26032202@gmail.com";
@@ -79,8 +85,8 @@ public class TestData {
     public static final String USER_PASSWORD43 = "qwerty";
     public static final String USER_RESPONSE43 = "широко распространён";
 
-    private static final Faker faker = new Faker();
-    public static final String USER_RANDOM_EMAIL = faker.bothify("lena######????@mail.ru");
+
+
     public static final String USER_EMAIL_NEW = "lena19041609@mail.ru";
     public static final String USER_NAME44 = "Elena"; //Is used as base for another
     public static final String USER_NAME45 = "Елена";

@@ -54,6 +54,7 @@ public class BasePage {
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
                 .post("users/");
+        System.out.println("USER DATA TO REGISTRATION: " + userRegistration.getEmail() + " password: " + userRegistration.getPassword() + " NAME: " + userRegistration.getUsername());
         return response;
     }
 
