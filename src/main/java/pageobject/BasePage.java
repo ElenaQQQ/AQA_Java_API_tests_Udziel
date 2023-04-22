@@ -18,11 +18,6 @@ import java.nio.file.Paths;
 
 public class BasePage {
 
-    @BeforeTest
-    public void precondition() {
-        baseURI = BASE_URI;
-    }
-
     public String getAccessToken(UserToLogin userToLogin) {
 
         Response response = given()
