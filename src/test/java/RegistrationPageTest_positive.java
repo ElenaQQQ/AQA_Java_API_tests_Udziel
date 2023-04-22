@@ -7,21 +7,13 @@ import pageobject.BasePage;
 
 import static Config.TestData.*;
 
-public class RegistrationPageTest_positive extends BasePage {
-    public String userEmail = USER_RANDOM_EMAIL;
-    public String userPassword = USER_TEST_PASSWORD;
-    public String userName = USER_TEST_NAME;
-
-    @AfterMethod
-    public void deleteUserAfterTest(){
-        deleteUserMe(userEmail.toLowerCase(), userPassword);
-    }
+public class RegistrationPageTest_positive extends BasePageTest {
 
     @Test (description = "with valid e-mail: lower case")
     public void userRegistration_1(){
         userEmail = USER_EMAIL1;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
                 response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
                 "TEST FAILED");
@@ -44,7 +36,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_2(){
         userEmail = USER_EMAIL2;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -55,7 +47,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_3(){
         userEmail = USER_EMAIL3;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -66,7 +58,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_4(){
         userEmail = USER_EMAIL4;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -77,7 +69,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_5(){
         userEmail = USER_EMAIL5;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -88,7 +80,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_6(){
         userEmail = USER_EMAIL6;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -99,7 +91,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_16(){
         userPassword = USER_PASSWORD16;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -110,7 +102,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_17(){
         userPassword = USER_PASSWORD17;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -121,7 +113,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_18(){
         userPassword = USER_PASSWORD18;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -132,7 +124,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_19(){
         userPassword = USER_PASSWORD19;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -143,7 +135,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_20(){
         userPassword = USER_PASSWORD20;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -154,7 +146,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_26(){
         userName = USER_NAME26;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -165,7 +157,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_27(){
         userName = USER_NAME27;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -176,7 +168,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_28(){
         userName = USER_NAME28;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -187,7 +179,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_29(){
         userName = USER_NAME29;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
@@ -198,7 +190,7 @@ public class RegistrationPageTest_positive extends BasePage {
     public void userRegistration_30(){
         userName = userEmail;
         UserDataToRegistration userDataToRegistration = new UserDataToRegistration(userEmail, userPassword, userName);
-        Response response = registerUser(userDataToRegistration);
+        Response response = basePage.registerUser(userDataToRegistration);
 
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),

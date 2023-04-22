@@ -12,8 +12,8 @@ public class BasePageTest {
 
     protected BasePage basePage;
     protected String userEmail;
-    protected String userPassword = USER_TEST_PASSWORD;
-    protected String userName = USER_TEST_NAME;
+    protected String userPassword = USER_PASSWORD;
+    protected String userName = USER_NAME;
 
     @BeforeTest
     public void beforeAllTests() {
@@ -25,6 +25,11 @@ public class BasePageTest {
     @BeforeMethod
     public void beforeEachTest() {
         userEmail = USER_RANDOM_EMAIL;
+    }
+
+    @AfterMethod
+    public void deleteUserAfterTest(){
+        basePage.deleteUserMe(userEmail.toLowerCase(), userPassword);
     }
 
 
