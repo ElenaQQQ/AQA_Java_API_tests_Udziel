@@ -6,7 +6,7 @@ import entities.*;
 import io.restassured.http.ContentType;
 import org.testng.annotations.*;
 
-import static Config.Config.*;
+import static config.Config.*;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 

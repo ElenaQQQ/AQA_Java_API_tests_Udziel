@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import pageobject.BasePage;
 
-import static Config.TestData.*;
+import static config.TestData.*;
 
 public class RegistrationPageTests extends BasePageTest {
 

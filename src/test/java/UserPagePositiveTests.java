@@ -8,8 +8,8 @@ import org.testng.annotations.*;
 import pageobject.BasePage;
 import pageobject.UserPage;
 
-import static Config.Config.BASE_URI;
-import static Config.TestData.*;
+import static config.Config.BASE_URI;
+import static config.TestData.*;
 import static io.restassured.RestAssured.*;
 
 public class UserPagePositiveTests extends BasePageTest {

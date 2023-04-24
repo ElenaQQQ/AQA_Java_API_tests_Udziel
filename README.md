@@ -14,14 +14,14 @@ Test types:
 
 Using:
 - Faker to generate test data, test data file
-- Credentials at Config.file, added to .gitignore
+- Credentials at config.file, added to .gitignore
 - Annotations @BeforeTest, @BeforeMethod, @AfterTest, @AfterMethod
 - Methods POST, GET, PUT, PATCH, DELETE
 - User objects as a method's parameter, as a request body
 
 - Classes:
   
-  config/Config - values for setting test environment
+  config/config - values for setting test environment
          /Credentials - user and admin credentials (added to .gitignore)
          /TestData - test data
   entities/ - User objects for different purposes

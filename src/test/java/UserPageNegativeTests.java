@@ -6,9 +6,9 @@ import org.testng.annotations.*;
 import pageobject.BasePage;
 import pageobject.UserPage;
 
-import static Config.Config.BASE_URI;
-import static Config.Credentials.USER_NAME;
-import static Config.TestData.*;
+import static config.Config.BASE_URI;
+import static config.Credentials.USER_NAME;
+import static config.TestData.*;
 import static io.restassured.RestAssured.baseURI;
 
 public class UserPageNegativeTests extends BasePageTest {

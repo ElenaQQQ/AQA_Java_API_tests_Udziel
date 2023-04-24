@@ -3,8 +3,8 @@ package pageobject;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeTest;
 
-import static Config.Config.BASE_URI;
-import static Config.Credentials.*;
+import static config.Config.BASE_URI;
+import static config.Credentials.*;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.*;
 
