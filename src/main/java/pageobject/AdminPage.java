@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.*;
 
 public class AdminPage extends BasePage {
 
-    private String accessToken;
+    protected String accessToken;
 
     @BeforeTest
     public void start() {
