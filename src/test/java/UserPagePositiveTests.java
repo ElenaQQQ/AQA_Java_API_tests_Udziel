@@ -60,6 +60,11 @@ public class UserPagePositiveTests extends BasePageTest {
                 "Name is not equal");
     }
 
+    @Test
+    public void deleteUserMe_14(){
+        Response response = basePage.deleteUserMe(userToDelete);
+        Assert.assertEquals(response.then().extract().statusCode(),204);
+    }
 
     @Test (description = "change name to valid: Uppercase and Lowercase letters")
     public void test_44() {

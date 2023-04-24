@@ -1,13 +1,8 @@
 import com.github.javafaker.Faker;
-import entities.UserDataToRegistration;
-import entities.UserToDelete;
-import entities.UserToLogin;
+import entities.*;
 import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageobject.BasePage;
 import pageobject.UserPage;
 
@@ -15,7 +10,6 @@ import static Config.Config.BASE_URI;
 import static Config.Credentials.USER_NAME;
 import static Config.TestData.*;
 import static io.restassured.RestAssured.baseURI;
-import static io.restassured.RestAssured.given;
 
 public class UserPageNegativeTests extends BasePageTest {
 
@@ -45,12 +39,6 @@ public class UserPageNegativeTests extends BasePageTest {
         userToLogin = new UserToLogin(userToTest.getEmail(), userToTest.getPassword());
         accessToken = basePage.getAccessToken(userToLogin);
         userToDelete = new UserToDelete(userToTest.getEmail(), userToTest.getPassword());
-    }
-
-   @Test
-    public void deleteUserMe_14(){
-        Response response = basePage.deleteUserMe(userToDelete);
-        Assert.assertEquals(response.then().extract().statusCode(),204);
     }
 
     @Test (description = "change name to invalid: empty field")
