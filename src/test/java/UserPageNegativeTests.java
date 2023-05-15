@@ -41,31 +41,6 @@ public class UserPageNegativeTests extends BasePageTest {
         userToDelete = new UserToDelete(userToTest.getEmail(), userToTest.getPassword());
     }
 
-    @Test (description = "change name to invalid: empty field")
-    public void test_49() {
-
-        Response response1 = userPage.changeUsername(USER_NAME49, accessToken);
-        response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("username").contains(USER_RESPONSE49));
-    }
-
-    @Test (description = "change name to invalid: 151 symbol")
-    public void test_50() {
-
-        Response response1 = userPage.changeUsername(USER_NAME50, accessToken);
-        response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("username").contains(USER_RESPONSE50));
-
-    }
-
-    @Test (description = "change name to invalid: contains \"*/#\"")
-    public void test_51() {
-
-        Response response1 = userPage.changeUsername(USER_NAME51, accessToken);
-        response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("username").contains(USER_RESPONSE51));
-    }
-
     @Test (description = "change password to invalid: 7 symbols")
     public void test_39() {
         Response response1 = userPage.changeUserPassword(USER_PASSWORD39, accessToken);
@@ -99,6 +74,31 @@ public class UserPageNegativeTests extends BasePageTest {
         Response response1 = userPage.changeUserPassword(USER_PASSWORD43, accessToken);
         response1.then().log().all().statusCode(400);
         Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains(USER_RESPONSE43));
+    }
+
+    @Test (description = "change name to invalid: empty field")
+    public void test_49() {
+
+        Response response1 = userPage.changeUsername(USER_NAME49, accessToken);
+        response1.then().log().all().statusCode(400);
+        Assert.assertTrue(response1.then().extract().jsonPath().getString("username").contains(USER_RESPONSE49));
+    }
+
+    @Test (description = "change name to invalid: 151 symbol")
+    public void test_50() {
+
+        Response response1 = userPage.changeUsername(USER_NAME50, accessToken);
+        response1.then().log().all().statusCode(400);
+        Assert.assertTrue(response1.then().extract().jsonPath().getString("username").contains(USER_RESPONSE50));
+
+    }
+
+    @Test (description = "change name to invalid: contains \"*/#\"")
+    public void test_51() {
+
+        Response response1 = userPage.changeUsername(USER_NAME51, accessToken);
+        response1.then().log().all().statusCode(400);
+        Assert.assertTrue(response1.then().extract().jsonPath().getString("username").contains(USER_RESPONSE51));
     }
 
 
