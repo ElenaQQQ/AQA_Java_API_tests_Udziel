@@ -66,41 +66,6 @@ public class UserPagePositiveTests extends BasePageTest {
         Assert.assertEquals(response.then().extract().statusCode(),204);
     }
 
-    @Test (description = "change name to valid: Uppercase and Lowercase letters")
-    public void test_44() {
-        Response response1 = userPage.changeUsername(USER_NAME44, accessToken);
-        response1.then().log().all().statusCode(200);
-        Assert.assertEquals(USER_NAME44, response1.then().extract().jsonPath().getString("username"));
-    }
-
-    @Test (description = "change name to valid: Cyrillic letters")
-    public void test_45() {
-        Response response1 = userPage.changeUsername(USER_NAME45, accessToken);
-        response1.then().log().all().statusCode(200);
-        Assert.assertEquals(USER_NAME45, response1.then().extract().jsonPath().getString("username"));
-    }
-
-    @Test (description = "change name to valid: Contains numbers")
-    public void test_46() {
-        Response response1 = userPage.changeUsername(USER_NAME46, accessToken);
-        response1.then().log().all().statusCode(200);
-        Assert.assertEquals(USER_NAME46, response1.then().extract().jsonPath().getString("username"));
-    }
-
-    @Test (description = "change name to valid: Contains \"@+.-_\"")
-    public void test_47() {
-        Response response1 = userPage.changeUsername(USER_NAME47, accessToken);
-        response1.then().log().all().statusCode(200);
-        Assert.assertEquals(USER_NAME47, response1.then().extract().jsonPath().getString("username"));
-    }
-
-    @Test (description = "change name to valid: Equal to email")
-    public void test_48() {
-        Response response1 = userPage.changeUsername(userToTest.getEmail(), accessToken);
-        response1.then().log().all().statusCode(200);
-        Assert.assertEquals(userToTest.getEmail(), response1.then().extract().jsonPath().getString("username"));
-    }
-
     @Test (description = "change password to valid: lowerCase letters only >=8 symbols")
     public void test_34() {
         Response response1 = userPage.changeUserPassword(USER_PASSWORD34, accessToken);
@@ -146,4 +111,38 @@ public class UserPagePositiveTests extends BasePageTest {
         Assert.assertTrue(basePage.getAccessToken(userToLogin).length() > 10);
     }
 
+    @Test (description = "change name to valid: Uppercase and Lowercase letters")
+    public void test_44() {
+        Response response1 = userPage.changeUsername(USER_NAME44, accessToken);
+        response1.then().log().all().statusCode(200);
+        Assert.assertEquals(USER_NAME44, response1.then().extract().jsonPath().getString("username"));
+    }
+
+    @Test (description = "change name to valid: Cyrillic letters")
+    public void test_45() {
+        Response response1 = userPage.changeUsername(USER_NAME45, accessToken);
+        response1.then().log().all().statusCode(200);
+        Assert.assertEquals(USER_NAME45, response1.then().extract().jsonPath().getString("username"));
+    }
+
+    @Test (description = "change name to valid: Contains numbers")
+    public void test_46() {
+        Response response1 = userPage.changeUsername(USER_NAME46, accessToken);
+        response1.then().log().all().statusCode(200);
+        Assert.assertEquals(USER_NAME46, response1.then().extract().jsonPath().getString("username"));
+    }
+
+    @Test (description = "change name to valid: Contains \"@+.-_\"")
+    public void test_47() {
+        Response response1 = userPage.changeUsername(USER_NAME47, accessToken);
+        response1.then().log().all().statusCode(200);
+        Assert.assertEquals(USER_NAME47, response1.then().extract().jsonPath().getString("username"));
+    }
+
+    @Test (description = "change name to valid: Equal to email")
+    public void test_48() {
+        Response response1 = userPage.changeUsername(userToTest.getEmail(), accessToken);
+        response1.then().log().all().statusCode(200);
+        Assert.assertEquals(userToTest.getEmail(), response1.then().extract().jsonPath().getString("username"));
+    }
 }
