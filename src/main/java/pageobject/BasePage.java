@@ -1,20 +1,9 @@
 package pageobject;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import entities.*;
 import io.restassured.http.ContentType;
-import org.testng.annotations.*;
-
-import static config.Config.*;
-import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
-
 import io.restassured.response.Response;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class BasePage {
 
