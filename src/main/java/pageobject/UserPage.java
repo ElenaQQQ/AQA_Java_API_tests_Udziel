@@ -18,18 +18,18 @@ public class UserPage extends BasePage {
                 .patch("users/me/");
     }
 
-//    public Response changeUserData(UserDataToRegistration userToTestNew){
-//        return given()
-//                .when()
-//                .contentType(ContentType.JSON)
-//                .header("Authorization", "Token " + getAccessToken(userToLogin))
-//                .body("{\n" +
-//                        " \"email\": \"" + userToTestNew.getEmail() + "\"\n" +
-//                        " \"username\": \"" + userToTestNew.getUsername() + "\"\n" +
-//                        " \"password\": \"" + userToTestNew.getPassword() + "\"\n" +
-//                        "}")
-//                .put("users/me/");
-//    }
+    public Response changeUsernameAndName(String userEmail, String userName, String accessToken){
+        return given()
+                .when()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Token " + accessToken)
+                .body("{\n" +
+                        " \"email\": \"" + userEmail + "\",\n" +
+                        " \"username\": \"" + userName + "\",\n" +
+                        " \"donor\": \"" + "[]" + "\"\n" +
+                        "}")
+                .put("users/me/");
+    }
 
     public Response changeUserPassword(String newPassword, String accessToken){
         return given()
