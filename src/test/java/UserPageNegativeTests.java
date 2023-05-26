@@ -7,9 +7,8 @@ import pageobject.BasePage;
 import pageobject.UserPage;
 
 import static config.Config.BASE_URI;
-import static config.Credentials.USER_NAME;
-import static config.TestData.*;
 import static io.restassured.RestAssured.baseURI;
+import static pageobject.BasePage.USER_TEST_NAME;
 
 public class UserPageNegativeTests extends BasePageTest {
 
@@ -32,78 +31,38 @@ public class UserPageNegativeTests extends BasePageTest {
     public void beforeEachTest(){
         userEmailRandom = faker.bothify("lena######????@mail.ru");
         userPasswordRandom = faker.bothify("###???###???Q_");
-        userToTest = new User(userEmailRandom, userPasswordRandom, USER_NAME);
+        userToTest = new User(userEmailRandom, userPasswordRandom, USER_TEST_NAME);
         basePage.registerUser(userToTest);
         accessToken = basePage.getAccessToken(userToTest);
     }
 
-    @Test (description = "change password to invalid: 7 symbols")
-    public void test_39() {
-        Response response1 = userPage.changeUserPassword(USER_PASSWORD39, accessToken);
+    @Test (dataProvider = "invalid passwords", dataProviderClass = UserPage.class)
+    public void changeUserPasswordToInvalidUnavailable(String userPassword, String userResponce) {
+        Response response1 = userPage.changeUserPassword(userPassword, accessToken);
         response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains(USER_RESPONSE39));
-    }
-
-    @Test (description = "change password to invalid: equal to name + \"1\"")
-    public void test_40() {
-        Response response1 = userPage.changeUserPassword(USER_PASSWORD40, accessToken);
-        response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains(USER_RESPONSE40));
+        Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains(userResponce));
     }
 
     @Test (description = "change password to invalid: equal to email")
     public void test_41() {
         Response response1 = userPage.changeUserPassword(userToTest.getEmail(), accessToken);
         response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains(USER_RESPONSE41));
+        Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains("слишком похож на email"));
     }
 
-    @Test (description = "change password to invalid: numbers only >= 8 symbols")
-    public void test_42() {
-        Response response1 = userPage.changeUserPassword(USER_PASSWORD42, accessToken);
-        response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains(USER_RESPONSE42));
-    }
-
-    @Test (description = "change password to invalid: \"qwerty\"")
-    public void test_43() {
-        Response response1 = userPage.changeUserPassword(USER_PASSWORD43, accessToken);
-        response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains(USER_RESPONSE43));
-    }
-
-    @Test (description = "change name to invalid: empty field")
-    public void test_49() {
-
-        Response response1 = userPage.changeUsername(USER_NAME49, accessToken);
-        response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("username").contains(USER_RESPONSE49));
-    }
-
-    @Test (description = "change name to invalid: 151 symbol")
-    public void test_50() {
-
-        Response response1 = userPage.changeUsername(USER_NAME50, accessToken);
-        response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("username").contains(USER_RESPONSE50));
-
-    }
-
-    @Test (description = "change name to invalid: contains \"*/#\"")
-    public void test_51() {
-
-        Response response1 = userPage.changeUsername(USER_NAME51, accessToken);
-        response1.then().log().all().statusCode(400);
-        Assert.assertTrue(response1.then().extract().jsonPath().getString("username").contains(USER_RESPONSE51));
+    @Test (dataProvider = "invalid names", dataProviderClass = UserPage.class)
+    public void changeNameToInvalidUnavailable (String userName, String userResponse) {
+        Response response = userPage.changeUsername(userName, accessToken);
+        response.then().log().all().statusCode(400);
+        Assert.assertTrue(response.then().extract().jsonPath().getString("username").contains(userResponse));
     }
 
     @Test (description = "сhange: valid email + invalid name")
     public void test_53() {
-
         Response response = userPage.changeUsernameAndName(userEmailRandom, faker.bothify("####*"), accessToken);
         response.then().log().all().statusCode(400);
         System.out.println("XXXXXXXXXXXXX " + response.then().extract().jsonPath().getString("username"));
-        Assert.assertTrue(response.then().extract().jsonPath().getString("username").contains(USER_RESPONSE53));
+        Assert.assertTrue(response.then().extract().jsonPath().getString("username").contains("правильное имя пользователя"));
     }
 
 
