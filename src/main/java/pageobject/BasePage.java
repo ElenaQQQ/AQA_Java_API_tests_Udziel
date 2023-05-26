@@ -2,7 +2,6 @@ package pageobject;
 
 import com.github.javafaker.Faker;
 import entities.*;
-import io.restassured.http.ContentType;
 import static io.restassured.RestAssured.given;
 import io.restassured.response.Response;
 import org.testng.annotations.DataProvider;
@@ -30,7 +29,6 @@ public class BasePage {
     }
 
     public Response registerUser(User userRegistration) {
-
         Response response = given()
                 .header("Content-Type", "application/json")
                 .body(userRegistration)
