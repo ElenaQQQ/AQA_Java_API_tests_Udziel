@@ -22,8 +22,8 @@ public class BasePage {
     public Response deleteUserMe(User userToDelete){
 
         return given()
+                .header("Content-Type", "application/json")
                 .when()
-                .contentType(ContentType.JSON)
                 .header("Authorization", "Token " + getAccessToken(userToDelete))
                 .body(userToDelete)
                 .delete("users/me/");
