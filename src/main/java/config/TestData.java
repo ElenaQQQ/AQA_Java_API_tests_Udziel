@@ -10,14 +10,6 @@ public class TestData {
 
     public static final String USER_TEST_NAME = "Name";
 
-    //Registration page tests positive
-
-    public static final String USER_EMAIL1 = faker.bothify("lena?????@gmail.com");
-    public static final String USER_EMAIL2 = faker.bothify("????".toUpperCase() + "lena?????@gmail.com");
-    public static final String USER_EMAIL3 = faker.bothify("#lenA26032202@gmail.com");
-    public static final String USER_EMAIL4 = faker.bothify("lena.21.031.?????@gmail.com");
-    public static final String USER_EMAIL5 = faker.bothify("lena?????@gmail.com.com.j.com");
-    public static final String USER_EMAIL6 = faker.bothify("len-a?????@gmail.com");
     //Registration page tests negative
     public static final String USER_EMAIL7 = "";
     public static final String USER_RESPONSE7 = "не может быть пустым";
@@ -55,7 +47,7 @@ public class TestData {
     public static final String USER_NAME27 = "Елена";
     public static final String USER_NAME28 = USER_NAME26 + "1";
     public static final String USER_NAME29 = USER_NAME26 + "@+.-_";
-    public static final String USER_NAME30 = USER_EMAIL1;
+
 
     //Registration page name tests negative
     public static final String USER_NAME31 = "";

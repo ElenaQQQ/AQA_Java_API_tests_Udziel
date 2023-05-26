@@ -4,6 +4,7 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pageobject.BasePage;
+import pageobject.RegistrationPage;
 
 import static config.TestData.*;
 
@@ -28,77 +29,16 @@ public class RegistrationPageTests extends BasePageTest {
         basePage.deleteUserMe(userToTest);
     }
 
-    @Test (description = "with valid e-mail: lower case")
-    public void userRegistration_1(){
-        userToTest.setEmail(USER_EMAIL1);
+    @Test (dataProvider = "Create user - with valid email", dataProviderClass = RegistrationPage.class)
+    public void createUserWithValidEmail (String userEmail) {
+        userToTest.setEmail(userEmail);
         Response response = basePage.registerUser(userToTest);
-                response.then().log().all().statusCode(201);
-        Assert.assertEquals(userToTest.getEmail().toLowerCase(), response.then().extract().jsonPath().getString("email"),
-                "TEST FAILED");
-    }
-
-   /* @Test
-    public void userRegistration_1_1() throws IOException {
-//        userEmail = parseJSON("RegistrationPageTest_positive").getAsString(); //.getAsJsonObject("1").toString();
-        File file = new File("src/main/java/resourses/RegistrationPageTest_positive.json");
-        Object obj = new JsonParser()
-//        UserDataToRegistration userDataToRegistration = objectMapper.readValue(file, UserDataToRegistration.class);
-        System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWW user Email = " + userEmail);
-//        Response response = registerUser(userEmail, USER_TEST_PASSWORD, USER_TEST_NAME);
-//        response.then().log().all().statusCode(201);
-//        Assert.assertEquals(userEmail.toLowerCase(), response.then().extract().jsonPath().getString("email"),
-//                "TEST FAILED");
-    }*/
-
-    @Test (description = "with valid e-mail: lower case and upper case")
-    public void userRegistration_2(){
-        userToTest.setEmail(USER_EMAIL2);
-        Response response = basePage.registerUser(userToTest);
-
         response.then().log().all().statusCode(201);
         Assert.assertEquals(userToTest.getEmail().toLowerCase(), response.then().extract().jsonPath().getString("email"),
                 "TEST FAILED");
     }
 
-    @Test (description = "with valid e-mail: starting with number")
-    public void userRegistration_3(){
-        userToTest.setEmail(USER_EMAIL3);
-        Response response = basePage.registerUser(userToTest);
 
-        response.then().log().all().statusCode(201);
-        Assert.assertEquals(userToTest.getEmail().toLowerCase(), response.then().extract().jsonPath().getString("email"),
-                "TEST FAILED");
-    }
-
-    @Test (description = "with valid e-mail: with several dots in name part, not in a row")
-    public void userRegistration_4(){
-        userToTest.setEmail(USER_EMAIL4);
-        Response response = basePage.registerUser(userToTest);
-
-        response.then().log().all().statusCode(201);
-        Assert.assertEquals(userToTest.getEmail().toLowerCase(), response.then().extract().jsonPath().getString("email"),
-                "TEST FAILED");
-    }
-
-    @Test (description = "with valid e-mail: with several dots in domain part, not in a row")
-    public void userRegistration_5(){
-        userToTest.setEmail(USER_EMAIL5);
-        Response response = basePage.registerUser(userToTest);
-
-        response.then().log().all().statusCode(201);
-        Assert.assertEquals(userToTest.getEmail().toLowerCase(), response.then().extract().jsonPath().getString("email"),
-                "TEST FAILED");
-    }
-
-    @Test (description = "with valid e-mail: with \"-\" in name part")
-    public void userRegistration_6(){
-        userToTest.setEmail(USER_EMAIL6);
-        Response response = basePage.registerUser(userToTest);
-
-        response.then().log().all().statusCode(201);
-        Assert.assertEquals(userToTest.getEmail().toLowerCase(), response.then().extract().jsonPath().getString("email"),
-                "TEST FAILED");
-    }
 
     @Test (description = "with invalid e-mail: empty field")
     public void userRegistration_7(){
