@@ -1,7 +1,5 @@
 import com.github.javafaker.Faker;
-import entities.UserDataToRegistration;
-import entities.UserToDelete;
-import entities.UserToLogin;
+import entities.User;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -14,9 +12,7 @@ import static io.restassured.RestAssured.*;
 
 public class UserPagePositiveTests extends BasePageTest {
 
-    protected UserDataToRegistration userToTest;
-    protected UserToLogin userToLogin;
-    protected UserToDelete userToDelete;
+    protected User userToTest;
     protected String accessToken;
     protected static Faker faker = new Faker();
     protected static String userEmailRandom;
@@ -35,16 +31,14 @@ public class UserPagePositiveTests extends BasePageTest {
     public void beforeEachTest(){
         userEmailRandom = faker.bothify("lena######????@mail.ru");
         userPasswordRandom = faker.bothify("###???###???Q_");
-        userToTest = new UserDataToRegistration(userEmailRandom, userPasswordRandom, USER_TEST_NAME);
+        userToTest = new User(userEmailRandom, userPasswordRandom, USER_TEST_NAME);
         basePage.registerUser(userToTest);
-        userToLogin = new UserToLogin(userToTest.getEmail(), userToTest.getPassword());
-        accessToken = basePage.getAccessToken(userToLogin);
-        userToDelete = new UserToDelete(userToTest.getEmail(), userToTest.getPassword());
+        accessToken = basePage.getAccessToken(userToTest);
     }
 
     @AfterMethod
     public void deleteUserAfterTest() {
-        basePage.deleteUserMe(userToDelete);
+        basePage.deleteUserMe(userToTest);
     }
 
     @Test
@@ -62,7 +56,7 @@ public class UserPagePositiveTests extends BasePageTest {
 
     @Test
     public void deleteUserMe_14(){
-        Response response = basePage.deleteUserMe(userToDelete);
+        Response response = basePage.deleteUserMe(userToTest);
         Assert.assertEquals(response.then().extract().statusCode(),204);
     }
 
@@ -70,45 +64,45 @@ public class UserPagePositiveTests extends BasePageTest {
     public void test_34() {
         Response response1 = userPage.changeUserPassword(USER_PASSWORD34, accessToken);
         response1.then().log().all().statusCode(204);
-        userToLogin.setPassword(USER_PASSWORD34);
-        userToDelete.setPassword(USER_PASSWORD34);
-        Assert.assertTrue(basePage.getAccessToken(userToLogin).length() > 10);
+        userToTest.setPassword(USER_PASSWORD34);
+        userToTest.setCurrent_password(USER_PASSWORD34);
+        Assert.assertTrue(basePage.getAccessToken(userToTest).length() > 10);
     }
 
     @Test (description = "change password to valid: UpperCase letters only >=8 symbols")
     public void test_35() {
         Response response1 = userPage.changeUserPassword(USER_PASSWORD35, accessToken);
         response1.then().log().all().statusCode(204);
-        userToLogin.setPassword(USER_PASSWORD35);
-        userToDelete.setPassword(USER_PASSWORD35);
-        Assert.assertTrue(basePage.getAccessToken(userToLogin).length() > 10);
+        userToTest.setPassword(USER_PASSWORD35);
+        userToTest.setCurrent_password(USER_PASSWORD35);
+        Assert.assertTrue(basePage.getAccessToken(userToTest).length() > 10);
     }
 
     @Test (description = "change password to valid: lowerCase and UpperCase letters only >=8 symbols")
     public void test_36() {
         Response response1 = userPage.changeUserPassword(USER_PASSWORD36, accessToken);
         response1.then().log().all().statusCode(204);
-        userToLogin.setPassword(USER_PASSWORD36);
-        userToDelete.setPassword(USER_PASSWORD36);
-        Assert.assertTrue(basePage.getAccessToken(userToLogin).length() > 10);
+        userToTest.setPassword(USER_PASSWORD36);
+        userToTest.setCurrent_password(USER_PASSWORD36);
+        Assert.assertTrue(basePage.getAccessToken(userToTest).length() > 10);
     }
 
     @Test (description = "change password to valid: letters and numbers >=8 symbols")
     public void test_37() {
         Response response1 = userPage.changeUserPassword(USER_PASSWORD37, accessToken);
         response1.then().log().all().statusCode(204);
-        userToLogin.setPassword(USER_PASSWORD37);
-        userToDelete.setPassword(USER_PASSWORD37);
-        Assert.assertTrue(basePage.getAccessToken(userToLogin).length() > 10);
+        userToTest.setPassword(USER_PASSWORD37);
+        userToTest.setCurrent_password(USER_PASSWORD37);
+        Assert.assertTrue(basePage.getAccessToken(userToTest).length() > 10);
     }
 
     @Test (description = "change password to valid: special symbols >= 8: ~ ! ? @ # $ % ^ & * _ - + ( ) [ ] { } > < / \\ | \" ' . , : ;")
     public void test_38() {
         Response response1 = userPage.changeUserPassword(USER_PASSWORD38, accessToken);
         response1.then().log().all().statusCode(204);
-        userToLogin.setPassword(USER_PASSWORD38);
-        userToDelete.setPassword(USER_PASSWORD38);
-        Assert.assertTrue(basePage.getAccessToken(userToLogin).length() > 10);
+        userToTest.setPassword(USER_PASSWORD38);
+        userToTest.setCurrent_password(USER_PASSWORD38);
+        Assert.assertTrue(basePage.getAccessToken(userToTest).length() > 10);
     }
 
     @Test (description = "change name to valid: Uppercase and Lowercase letters")

@@ -13,9 +13,7 @@ import static io.restassured.RestAssured.baseURI;
 
 public class UserPageNegativeTests extends BasePageTest {
 
-    protected UserDataToRegistration userToTest;
-    protected UserToLogin userToLogin;
-    protected UserToDelete userToDelete;
+    protected User userToTest;
     protected String accessToken;
     protected static Faker faker = new Faker();
     protected static String userEmailRandom;
@@ -34,11 +32,9 @@ public class UserPageNegativeTests extends BasePageTest {
     public void beforeEachTest(){
         userEmailRandom = faker.bothify("lena######????@mail.ru");
         userPasswordRandom = faker.bothify("###???###???Q_");
-        userToTest = new UserDataToRegistration(userEmailRandom, userPasswordRandom, USER_NAME);
+        userToTest = new User(userEmailRandom, userPasswordRandom, USER_NAME);
         basePage.registerUser(userToTest);
-        userToLogin = new UserToLogin(userToTest.getEmail(), userToTest.getPassword());
-        accessToken = basePage.getAccessToken(userToLogin);
-        userToDelete = new UserToDelete(userToTest.getEmail(), userToTest.getPassword());
+        accessToken = basePage.getAccessToken(userToTest);
     }
 
     @Test (description = "change password to invalid: 7 symbols")

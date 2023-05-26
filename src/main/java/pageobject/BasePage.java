@@ -7,7 +7,7 @@ import io.restassured.response.Response;
 
 public class BasePage {
 
-    public String getAccessToken(UserToLogin userToLogin) {
+    public String getAccessToken(User userToLogin) {
 
         Response response = given()
                 .header("Content-Type", "application/json")
@@ -17,20 +17,17 @@ public class BasePage {
         return response.then().extract().response().jsonPath().getString("access");
     }
 
-    public Response deleteUserMe(UserToDelete userToDelete){
-        UserToLogin userToLogin = new UserToLogin(userToDelete.getEmail().toLowerCase(),userToDelete.getPassword());
-        String body = "{\n" +
-                    " \"current_password\": \"" + userToDelete.getPassword() + "\"\n" +
-                    "}";
+    public Response deleteUserMe(User userToDelete){
+
         return given()
                 .when()
                 .contentType(ContentType.JSON)
-                .header("Authorization", "Token " + getAccessToken(userToLogin))
-                .body(body)
+                .header("Authorization", "Token " + getAccessToken(userToDelete))
+                .body(userToDelete)
                 .delete("users/me/");
     }
 
-    public Response registerUser(UserDataToRegistration userRegistration) {
+    public Response registerUser(User userRegistration) {
 
         Response response = given()
                 .header("Content-Type", "application/json")
