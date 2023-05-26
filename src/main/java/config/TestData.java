@@ -94,4 +94,6 @@ public class TestData {
     public static final String USER_NAME51 = USER_NAME26 + "*/#";
     public static final String USER_RESPONSE51 = "может содержать только";
 
+    public static final String USER_RESPONSE53 = "правильное имя пользователя";
+
 }
