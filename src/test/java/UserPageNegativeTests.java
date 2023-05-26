@@ -101,6 +101,14 @@ public class UserPageNegativeTests extends BasePageTest {
         Assert.assertTrue(response1.then().extract().jsonPath().getString("username").contains(USER_RESPONSE51));
     }
 
+    @Test (description = "сhange: valid email + invalid name")
+    public void test_53() {
+
+        Response response = userPage.changeUsernameAndName(userEmailRandom, faker.bothify("####*"), accessToken);
+        response.then().log().all().statusCode(400);
+        System.out.println("XXXXXXXXXXXXX " + response.then().extract().jsonPath().getString("username"));
+        Assert.assertTrue(response.then().extract().jsonPath().getString("username").contains(USER_RESPONSE53));
+    }
 
 
 }
