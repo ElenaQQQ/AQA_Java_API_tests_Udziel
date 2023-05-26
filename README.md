@@ -1,10 +1,10 @@
 # AQA_Java_API_test_Udziel
 API testing of Udziel project - charity cashback platform.
-Stack: Java Selenium, Maven, TestNG, REST API, Rest Assured, Lombok, 
+Stack: Java Selenium, Maven, TestNG, REST API, Rest Assured, Lombok, Allure
 
 Testing functionality:
 - User registration
-- User account - getting info, changing data
+- User account - getting info, changing data, user deleting 
 - Admin access - getting users list
 
 Test types:
@@ -13,18 +13,18 @@ Test types:
 - end-to-end
 
 Using:
-- Faker to generate test data, test data file
+- Faker to generate test data
 - Credentials at config.file, added to .gitignore
 - Annotations @BeforeTest, @BeforeMethod, @AfterTest, @AfterMethod
 - Methods POST, GET, PUT, PATCH, DELETE
 - User objects as a method's parameter, as a request body
+- Data provider
 
 - Classes:
   
   config/config - values for setting test environment
          /Credentials - user and admin credentials (added to .gitignore)
-         /TestData - test data
-  entities/ - User objects for different purposes
+  entities/ - User object for different purposes
   tests/ - Tests according to functionality
        /BasePageTest - BeforeTest and fields for all test classes
 --------------------------------------------------------------------------------------------------------- 
