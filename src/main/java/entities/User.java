@@ -16,6 +16,7 @@ public class User {
         private String date_joined;
         private String role;
         private String date_birth;
+        private String new_password;
 
         public User(String userEmailRandom, String userPasswordRandom, String userName) {
                 email = userEmailRandom;

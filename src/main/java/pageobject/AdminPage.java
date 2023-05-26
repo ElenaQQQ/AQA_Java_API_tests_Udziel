@@ -1,5 +1,6 @@
 package pageobject;
 
+import entities.User;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeTest;
 
@@ -16,17 +17,12 @@ public class AdminPage extends BasePage {
     public void start() {
         baseURI = BASE_URI;
 
-        String body = "{\n" +
-                " \"email\": \"" + ADMIN_EMAIL + "\",\n" +
-                " \"password\": \"" + ADMIN_PASSWORD + "\"\n" +
-                "}";
+        User admin = new User(ADMIN_EMAIL, ADMIN_PASSWORD);
 
         Response response = given()
                 .header("Content-Type", "application/json")
-                .body(body)
+                .body(admin)
                 .post("jwt/create/");
-
-        response.then().log().all().statusCode(200);
 
         setAdminAccessToken(response.then().extract().response().jsonPath().getString("access"));
     }

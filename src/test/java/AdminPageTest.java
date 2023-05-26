@@ -13,9 +13,9 @@ public class AdminPageTest extends AdminPage {
     @Test
     public void getUsersList_15(){
         List<User> users = given()
+                .header("Content-Type", "application/json")
                 .header("Authorization", "Token " + getAdminAccessToken())
                 .when()
-                .contentType(ContentType.JSON)
                 .get("users/")
                 .then().log().all()
                 .extract().jsonPath().getList(".", User.class);

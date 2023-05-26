@@ -62,8 +62,9 @@ public class UserPagePositiveTests extends BasePageTest {
 
     @Test (dataProvider = "valid passwords", dataProviderClass = UserPage.class)
     public void changePasswordToValidAvailable(String userPassword) {
-        Response response1 = userPage.changeUserPassword(userPassword, accessToken);
-        response1.then().log().all().statusCode(204);
+        userToTest.setNew_password(userPassword);
+        Response response = userPage.changeUserPassword(userToTest, accessToken);
+        response.then().log().all().statusCode(204);
         userToTest.setPassword(userPassword);
         userToTest.setCurrent_password(userPassword);
         Assert.assertTrue(basePage.getAccessToken(userToTest).length() > 10);

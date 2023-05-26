@@ -38,14 +38,16 @@ public class UserPageNegativeTests extends BasePageTest {
 
     @Test (dataProvider = "invalid passwords", dataProviderClass = UserPage.class)
     public void changeUserPasswordToInvalidUnavailable(String userPassword, String userResponce) {
-        Response response1 = userPage.changeUserPassword(userPassword, accessToken);
+        userToTest.setNew_password(userPassword);
+        Response response1 = userPage.changeUserPassword(userToTest, accessToken);
         response1.then().log().all().statusCode(400);
         Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains(userResponce));
     }
 
     @Test (description = "change password to invalid: equal to email")
     public void test_41() {
-        Response response1 = userPage.changeUserPassword(userToTest.getEmail(), accessToken);
+        userToTest.setNew_password(userToTest.getEmail());
+        Response response1 = userPage.changeUserPassword(userToTest, accessToken);
         response1.then().log().all().statusCode(400);
         Assert.assertTrue(response1.then().extract().jsonPath().getString("new_password").contains("слишком похож на email"));
     }
@@ -57,11 +59,12 @@ public class UserPageNegativeTests extends BasePageTest {
         Assert.assertTrue(response.then().extract().jsonPath().getString("username").contains(userResponse));
     }
 
-    @Test (description = "сhange: valid email + invalid name")
-    public void test_53() {
-        Response response = userPage.changeUsernameAndName(userEmailRandom, faker.bothify("####*"), accessToken);
+    @Test (description = "change: valid email + invalid name")
+    public void changeUserDataWithInvalidName() {
+        userToTest.setEmail("new_" + userToTest.getEmail());
+        userToTest.setUsername(faker.bothify("####*"));
+        Response response = userPage.changeUserEmailAndName(userToTest, accessToken);
         response.then().log().all().statusCode(400);
-        System.out.println("XXXXXXXXXXXXX " + response.then().extract().jsonPath().getString("username"));
         Assert.assertTrue(response.then().extract().jsonPath().getString("username").contains("правильное имя пользователя"));
     }
 

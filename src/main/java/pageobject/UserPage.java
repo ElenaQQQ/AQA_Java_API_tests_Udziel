@@ -1,16 +1,16 @@
 package pageobject;
 
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 
+import entities.User;
+import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 public class UserPage extends BasePage {
 
     public Response changeUsername(String newName, String accessToken){
         return given()
+                .header("Content-Type", "application/json")
                 .when()
-                .contentType(ContentType.JSON)
                 .header("Authorization", "Token " + accessToken)
                 .body("{\n" +
                         " \"username\": \"" + newName + "\"\n" +
@@ -18,27 +18,21 @@ public class UserPage extends BasePage {
                 .patch("users/me/");
     }
 
-    public Response changeUsernameAndName(String userEmail, String userName, String accessToken){
+    public Response changeUserEmailAndName(User userToTest, String accessToken){
         return given()
+                .header("Content-Type", "application/json")
                 .when()
-                .contentType(ContentType.JSON)
                 .header("Authorization", "Token " + accessToken)
-                .body("{\n" +
-                        " \"email\": \"" + userEmail + "\",\n" +
-                        " \"username\": \"" + userName + "\",\n" +
-                        " \"donor\": \"" + "[]" + "\"\n" +
-                        "}")
+                .body(userToTest)
                 .put("users/me/");
     }
 
-    public Response changeUserPassword(String newPassword, String accessToken){
+    public Response changeUserPassword(User userToTest, String accessToken){
         return given()
+                .header("Content-Type", "application/json")
                 .when()
-                .contentType(ContentType.JSON)
                 .header("Authorization", "Token " + accessToken)
-                .body("{\n" +
-                        " \"new_password\": \"" + newPassword + "\"\n" +
-                        "}")
+                .body(userToTest)
                 .post("users/set_password/");
     }
 
