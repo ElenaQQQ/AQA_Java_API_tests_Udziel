@@ -19,6 +19,7 @@ Using:
 - Methods POST, GET, PUT, PATCH, DELETE
 - User objects as a method's parameter, as a request body
 - Data provider
+- Page object model
 
 - Classes:
   
