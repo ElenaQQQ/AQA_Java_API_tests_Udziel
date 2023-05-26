@@ -3,7 +3,7 @@ import org.testng.annotations.*;
 import static io.restassured.RestAssured.*;
 import static config.Config.*;
 
-public class BasePageTest {
+public abstract class BasePageTest {
 
 
 
